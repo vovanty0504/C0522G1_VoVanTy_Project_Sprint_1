@@ -1,0 +1,86 @@
+<div class="row container-fluid">
+  <div class="col-lg-1"></div>
+  <div class="col-lg-10">
+    <div class="row text-center">
+      <h2>DANH SÁCH THÀNH VIÊN</h2>
+    </div>
+    <div class="row">
+      <div class="col-lg-2 "></div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-4 col-sm-4 p-1 pe-0 content-end">
+        <div class="d-flex">
+          <input maxlength="25" class="form-control me-2" type="search" placeholder="Nhập tên để tìm.."
+                 aria-label="Search" [(ngModel)]="nameSearch">
+          <button (click)="getAllCustomer()" class="button btnGreen greenBorder" style="height: 38px" type="submit">
+            Tìm
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="!action" style="color: orange;text-align: center">
+      <div class="spinner-border text-warning" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <h1>Không tìm thấy dữ liệu !</h1>
+    </div>
+
+    <div class="row">
+      <table class="table text-bg-light" id="no-more-table" style="text-align: center" *ngIf="action">
+        <thead class="bg bg-warning">
+        <tr>
+          <th style="width: 10%">STT</th>
+          <th style="width: 20%">Tên thành viên</th>
+          <th style="width: 10%">CMND/CCCD</th>
+          <th style="width: 10%">Email</th>
+          <th style="width: 10%">Số điện thoại</th>
+          <th style="width: 10%">Địa chỉ</th>
+          <th style="width: 10%">Sửa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let customer of (customers$ | async); index as i">
+          <td data-tittle="STT">{{i + 1 + (page - 1) * pageSize}}</td>
+          <td class="text-start" data-tittle="Tên thành viên">{{customer.name | CustompPipe: 10}}</td>
+          <td data-tittle="Số CMND/CCCD">{{customer.idCard}}</td>
+          <td class="text-start" data-tittle="Email">{{customer.email | CustompPipe: 10}}</td>
+          <td data-tittle="Số điện thoại">{{customer.phoneNumber}}</td>
+          <td class="text-left" data-tittle="Địa chỉ"
+              style="text-align: left">{{customer.address | CustompPipe: 10}}</td>
+          <td data-tittle="Sửa">
+            <a routerLink="/customer/edit/{{customer.id}}">
+              <button class="button btnYellow yellowBorder">
+                Chỉnh sửa
+              </button>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-between ms-0 p-1 ps-0" *ngIf="action">
+        <select class="form-select p-1" style="width: 12%; height: 35px" [(ngModel)]="pageSize"
+                (ngModelChange)="getAllCustomer()">
+          <option [ngValue]="5">Hiển thị 5 dòng</option>
+          <option [ngValue]="10">Hiển thị 10 dòng</option>
+          <option [ngValue]="20">Hiển thị 20 dòng</option>
+        </select>
+        <nav aria-label="Page navigation example">
+          <ngb-pagination
+
+            [collectionSize]="(total$ | async)!"
+            [(page)]="page"
+            [pageSize]="pageSize"
+            [maxSize]="5"
+            (pageChange)="getAllCustomer()"
+            [boundaryLinks]="true">
+            <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+          </ngb-pagination>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-lg-1"></div>
+

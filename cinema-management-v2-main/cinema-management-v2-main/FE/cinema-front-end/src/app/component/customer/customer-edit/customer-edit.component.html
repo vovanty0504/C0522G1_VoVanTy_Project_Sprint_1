@@ -1,0 +1,100 @@
+<title>Chỉnh sửa tài khoản thành viên</title>
+<body>
+<div class="text-center bg-warning mt-4" id="head"><h1 class="m-0 pt-2 text-light ">SỬA TÀI KHOẢN THÀNH VIÊN</h1></div>
+<form class="mb-5" [formGroup]="formEdit" (ngSubmit)="saveEditing()">
+  <div formGroupName="user">
+
+    <input type="text" id="id" formControlName="id" hidden>
+
+    <label for="username"><b>Tài Khoản</b><span class="war">*</span></label>
+    <input type="text" id="username" formControlName="username" readonly>
+
+    <label for="password"><b>Mật Khẩu</b><span style="color: red">*</span>
+      <span class="text-danger ms-3 val"
+            *ngIf="formEdit.get('user').hasError('required','password')
+          && formEdit.get('user').get('password').dirty">
+        Vui lòng nhập mật khẩu mới!!</span>
+    </label>
+    <span class="text-danger ms-3 val"
+          *ngIf="formEdit.get('user').hasError('pattern','password')
+          && formEdit.get('user').get('password').dirty">
+                  Mật khẩu có 6 đến 12 ký tự, không được có ký tự đặc biệt!!</span>
+    <input class="form-control" type="password" placeholder="Nhập mật khẩu mới..." required id="password"
+           formControlName="password">
+  </div>
+
+  <label for="name"><b>Họ Và Tên</b><span class="war">*</span></label>
+  <span class="text-danger ms-3 val"
+        *ngIf="formEdit.controls.name.hasError('required') && formEdit.controls.name.dirty ">
+                         Vui lòng nhập tên!
+                </span>
+  <span class="text-danger ms-3"
+        *ngIf="formEdit.controls.name.hasError('pattern') && formEdit.controls.name.dirty ">
+                  Tên khách hàng không được chứa số và ký tự đặc biệt!!
+                </span>
+  <input type="text" required id="name" formControlName="name">
+
+  <label for="email"><b>Email</b><span class="war">*</span></label>
+  <span class="text-danger ms-3 val"
+        *ngIf="formEdit.controls.email.hasError('required') && formEdit.controls.email.dirty ">
+                         Vui lòng nhập email!
+                </span>
+  <span class="text-danger ms-3 val"
+        *ngIf="!formEdit.controls.email?.valid && (formEdit.controls.email?.dirty)">
+               Email phải đúng định dạng [xxxxxxxx@xxx.xxx]!!
+                </span>
+  <input type="email" id="email" formControlName="email">
+
+  <label for="code"><b>Số CMND/CCCD</b><span class="war">*</span></label>
+  <span class="text-danger ms-3 val"
+        *ngIf="formEdit.controls.idCard.hasError('required') && formEdit.controls.idCard.dirty ">
+                         Vui lòng nhập số CMND/CCCD!
+                </span>
+  <span class="text-danger ms-3 val"
+        *ngIf="!formEdit.controls.idCard?.valid && (formEdit.controls.idCard?.dirty)">
+                  Số CMND/CCCD là 9 hoặc 12 số!!
+                </span>
+  <input type="number" id="code" formControlName="idCard">
+
+  <label for="phoneNumber"><b>Số Điện Thoại</b><span class="war">*</span></label>
+  <span class="text-danger ms-3 val"
+        *ngIf="formEdit.controls.phoneNumber.hasError('required') && formEdit.controls.phoneNumber.dirty ">
+                         Vui lòng nhập số điện thoại!
+                </span>
+  <span class="text-danger ms-3 val"
+        *ngIf="!formEdit.controls.phoneNumber?.valid && (formEdit.controls.phoneNumber?.dirty)">
+                    Nhập đúng định dạng [+84x] hoặc [0x] (x là 9 chữ số)!!
+                </span>
+  <input type="text" id="phoneNumber" formControlName="phoneNumber">
+
+  <label for="address"><b>Địa Chỉ</b><span class="war">*</span></label>
+  <span class="text-danger ms-3 val"
+        *ngIf="formEdit.controls.address.hasError('required') && formEdit.controls.address.dirty ">
+                         Vui lòng nhập địa chỉ!
+                </span>
+  <input type="text" required id="address" formControlName="address">
+
+  <label class="mt-2"><b>Giới Tính</b><span class="war">*</span></label><br>
+  <span class="text-danger ms-3 val"
+        *ngIf="formEdit.controls.gender.hasError('required') && formEdit.controls.gender.dirty ">
+                         Vui lòng chọn giới tính!
+                </span>
+  <label><input type="radio" class="m-2" [value]="1" name="gender" formControlName="gender">Nam</label>
+  <label><input type="radio" class="m-2 ms-5" [value]="2" name="gender" formControlName="gender">Nữ</label>
+  <label class="mb-3"><input type="radio" class="m-2 ms-5" [value]="0" name="gender"
+                             formControlName="gender">Khác</label><br>
+
+  <label for="birthday"><b>Ngày Sinh</b><span class="war">*</span></label>
+  <span class="text-danger ms-3 val"
+        *ngIf="formEdit.controls.dayOfBirth.hasError('required') && formEdit.controls.dayOfBirth.dirty ">
+                         Vui lòng nhập ngày sinh!
+                </span>
+  <input type="date" required id="birthday" formControlName="dayOfBirth">
+  <div class="text-center wrapCss">
+    <!--    <button type="submit" class="button btnGreen">Lưu</button>-->
+    <button type="submit" class="button btnGreen" >Cập nhật</button>
+<!--    [disabled]="formEdit.invalid"-->
+    <!--    <button type="submit" class="button btnGreen">Cập nhật</button>-->
+  </div>
+</form>
+</body>

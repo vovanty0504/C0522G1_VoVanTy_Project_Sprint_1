@@ -1,0 +1,152 @@
+<div class="container">
+
+  <div class="row">
+    <h2 class="text-light text-center">DANH SÁCH NHÂN VIÊN</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-2 p-1 pe-0">
+      <button class="button btnGreen greenBorder" style="height: 39px" routerLink="/employee/create">
+        Thêm mới
+      </button>
+    </div>
+    <div class="col-10 p-1 pe-0">
+      <div class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Tìm theo tên nhân viên..."
+               aria-label="Search" [(ngModel)]="nameSearch">
+        <input class="form-control me-2" type="search" placeholder="Tìm theo cmnd..."
+               aria-label="Search" [(ngModel)]="idCardSearch">
+        <input class="form-control me-2" type="search" placeholder="Tìm theo số điện thoại..."
+               aria-label="Search" [(ngModel)]="phoneNumberSearch">
+        <button class="button btnGreen greenBorder" style="height: 38px; width: 30%" type="submit"
+                (click)="paginate()">
+          Tìm
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-5 mt-5" *ngIf="!action" style="color: orange;text-align: center">
+    <div class="spinner-border text-warning" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <h1>Không tìm thấy dữ liệu !</h1>
+  </div>
+
+  <div class="row table-responsive-sm table-responsive-lg table-responsive-xxl"  *ngIf="action" >
+    <table class="table table-sm table-active text-center " id="no-more-table" style="width: 100%">
+      <thead>
+      <tr class="bg bg-warning" style="text-align: center">
+        <th>Mã nhân viên</th>
+        <th>Tên nhân viên</th>
+        <th>Số CCCD</th>
+        <th>Email</th>
+        <th>Số điện thoại</th>
+        <th>Địa chỉ</th>
+        <th>Sửa</th>
+        <th>Xóa</th>
+      </tr>
+      </thead>
+      <tbody class="text-black bg-body">
+      <tr *ngFor="let employee of employeeList, index as i ">
+        <td *ngIf="employee.id <10" data-tittle="Mã nhân viên" style="width: 10%"> NV000{{employee.id}}</td>
+        <td *ngIf="employee.id <100 && employee.id >=10" data-tittle="Mã nhân viên" style="width: 10%">
+          NV00{{employee.id}}</td>
+        <td *ngIf="employee.id <1000 && employee.id >=100" data-tittle="Mã nhân viên" style="width: 10%">
+          NV0{{employee.id}}</td>
+        <td data-tittle="Tên nhân viên"
+            style="width: 12.5%; text-align: left">{{employee.name|CustompPipe: 20}}</td>
+        <td data-tittle="Số CCCD" style="width: 15%">{{employee.idCard}}</td>
+        <td data-tittle="Email" style="width: 17.5%; text-align: left">{{employee.email | CustompPipe: 20}}</td>
+        <td data-tittle="Số điện thoại">{{employee.phoneNumber}}</td>
+        <td data-tittle="Địa chỉ" style="text-align: left">{{employee.address | CustompPipe: 10}}</td>
+        <td style="width: 12.5%">
+          <button class="button btnYellow yellowBorder" routerLink="/employee/edit/{{employee.id}}">
+            Chỉnh sửa
+          </button>
+        </td>
+        <td style="width: 12.5%">
+          <div class="text-center wrapCss">
+            <!-- Button trigger modal -->
+            <button type="button" class=" button btnRed redBorder " data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" (click)="getInfoEmployeeDelete( employee.id, employee.name,
+                              employee.gender, employee.email, employee.address, employee.user.username, employee.image, employee.idCard,
+                              employee.dayOfBirth, employee.image )">
+              Xóa
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-between ms-0 p-1 ps-0" *ngIf="action">
+      <select class="form-select p-1" style="width: 13%; height: 35px " [(ngModel)]="pageSize"
+              (ngModelChange)="paginate()">
+        <option [ngValue]="5"> Hiển thị 5 dòng</option>
+        <option [ngValue]="10">Hiển thị 10 dòng</option>
+        <option [ngValue]="20">Hiển thị 20 dòng</option>
+      </select>
+      <nav aria-label="Page navigation example">
+        <ngb-pagination
+
+          [collectionSize]="(total$ | async)!"
+          [(page)]="page"
+          [pageSize]="pageSize"
+          [maxSize]="5"
+          (pageChange)="paginate()"
+          [boundaryLinks]="true">
+          <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+        </ngb-pagination>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<!--        Modal View Delete-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" [formGroup]="formDelete">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: black">Xóa Nhân Viên : {{deleteName}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <img [src]="deleteImage" id="avatar">
+        </div>
+        <br>
+        <label class="col-form-label lab">Tên Nhân Viên</label>
+        <input id="deleteName" formControlName="name" class="form-control" readonly>
+        <label class="col-form-label lab">Giới Tính</label>
+        <div>
+          <label class="lab"><input type="radio" class="m-2" value="0" name="gender" formControlName="gender"
+                                    [value]="0"
+                                    disabled>Nam</label>
+          <label class="mx-5 lab"><input type="radio" class="m-2 " value="1" name="gender"
+                                         formControlName="gender"
+                                         [value]="1" disabled>Nữ</label>
+          <label class="lab"><input type="radio" class="m-2" value="2" name="gender" formControlName="gender"
+                                    [value]="2" disabled>Khác</label><br>
+        </div>
+        <label class="col-form-label lab">Email</label>
+        <input id="deleteEmail" formControlName="email" class="form-control" readonly>
+        <label class="col-form-label lab">Địa Chỉ</label>
+        <input id="deleteAddress" formControlName="address" class="form-control" readonly>
+        <label class="col-form-label lab">Tài khoản</label>
+        <input id="deleteUser" formControlName="userName" class="form-control" readonly>
+        <label class="col-form-label lab">Số CMND</label>
+        <input id="deleteIdCard" formControlName="idCard" class="form-control" readonly>
+        <label class="col-form-label lab">Ngày Sinh</label>
+        <input id="deleteDayofBirth" formControlName="dayOfBirth" class="form-control" readonly>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button btnRed redBorder" (click)="deleteEmployee()" data-bs-dismiss="modal">
+          Xóa
+        </button>
+        <button type="button" class="mx-2 button btnYellow yellowBorder " data-bs-dismiss="modal">Quay Lại
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

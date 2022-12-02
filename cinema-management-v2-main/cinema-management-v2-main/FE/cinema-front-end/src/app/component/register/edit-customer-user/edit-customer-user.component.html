@@ -1,0 +1,243 @@
+<div class="row edit">
+  <div class="col-lg-2">
+  </div>
+  <div class="col-lg-8">
+    <div class="row mt-3" style="font-family: 'Times New Roman', sans-serif">
+      <div>
+        <h3 class="fw-bold text-light mb-4 mt-5"><span style="box-shadow: 0 8px 15px lightblue; padding: 10px">
+    QUẢN LÝ TÀI KHOẢN</span></h3>
+      </div>
+      <div class="col-lg-4 col-12 col-md-6 text-dark">
+        <div class="text-center" style="background-color: #f5eeee;">
+          <div class="info-dk">
+            <div class="bg-warning">
+              <img [src]="['/assets/image/avatar2.png']" height="200"
+                   width="200" class="m-3">
+            </div>
+            <div [formGroup]="customerForm" *ngIf="userForm">
+              <h3>{{customerName}}</h3>
+              <p>
+                <span *ngIf="customerTypename == 4"> <b>Thành Viên</b>: Đồng</span>
+                <span *ngIf="customerTypename == 3"> <b>Thành Viên</b>: Bạc</span>
+                <span *ngIf="customerTypename == 2"> <b>Thành Viên</b>: Vàng</span>
+                <span *ngIf="customerTypename == 1"> <b>Thành Viên</b>: Kim Cương</span><br>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-award-fill" viewBox="0 0 16 16">
+                  <path
+                    d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
+                  <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
+                </svg>
+                <span *ngIf="totalPoint"><b>Điểm tích lũy</b>: {{totalPoint | number  }} </span>
+                <span *ngIf="!totalPoint"><b>Điểm tích lũy</b>: 0 </span><br>
+                <span *ngIf="customerTypename == 4"> <b>Điểm nâng hạng thành viên:</b>: 1500 </span>
+                <span *ngIf="customerTypename == 3"> <b>Điểm nâng hạng thành viên:</b>: 3000 </span>
+                <span *ngIf="customerTypename == 2"> <b>Điểm nâng hạng thành viên:</b>: 5000 </span>
+              </p>
+              <div>
+                <a>
+                  <button class="button btnRed" (click)="whenLogout()">Đăng xuất</button>
+                </a>
+              </div>
+              <hr>
+              <a routerLink="/register/info">
+                <span class="text-dark">Thông tin tài khoản</span>
+              </a>
+              <hr>
+              <div class="row">
+                <div>
+                  <a routerLink="/ticket/history/point" class="text-dark">
+                    Lịch sử điểm
+                  </a>
+                </div>
+                <hr>
+                <div>
+                  <a routerLink="/ticket/history/booking" class="text-dark">
+                    Vé đã đặt
+                  </a>
+                </div>
+                <hr>
+                <div>
+                  <a routerLink="/ticket/history/canceled" class="text-dark">
+                    Vé đã hủy
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="background-color: #f2f2f2">
+          <div class="ms-3 pt-3">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-lg-8 col-12 col-md-6" style="font-family: 'Times New Roman', sans-serif">
+        <div id="head" class="bg-warning"><h5 class="text-light pt-3 ms-2">THÔNG TIN ĐĂNG NHẬP</h5></div>
+        <form [formGroup]="userForm" (ngSubmit)="updateUser()" *ngIf="userForm">
+          <div>
+            <label for="account" class="text-center"><b>Tài Khoản</b><span class="war">*</span></label>
+            <input type="text" readonly id="account" formControlName="username">
+          </div>
+
+          <div>
+            <label for="psw"><b>Mật Khẩu Cũ</b><span class="war">*</span>
+              <span *ngIf="!action" class="text-danger ms-3 val">Vui lòng nhập đúng mật khẩu!!!</span>
+            </label>
+            <input type="password" name="psw" id="psw" formControlName="oldPassword">
+          </div>
+
+          <div formGroupName="psFormGroup">
+            <div>
+              <label for="newpsw"><b>Mật Khẩu Mới</b><span class="war">*</span>
+
+                <span class="text-danger ms-3 val"
+                      *ngIf="userForm.get('psFormGroup').hasError('required','newPassword')
+          && (userForm.get('psFormGroup').get('newPassword').touched||submitted)">
+        Vui lòng nhập mật khẩu mới!!!</span>
+
+                <span class="text-danger ms-3 val"
+                      *ngIf="userForm.get('psFormGroup').hasError('minlength','newPassword')
+          && (userForm.get('psFormGroup').get('newPassword').touched||submitted)">
+                  Mật khẩu có ít nhất 6 ký tự!!!</span>
+
+              </label>
+              <input type="password" id="newpsw" formControlName="newPassword">
+            </div>
+
+            <div>
+              <label for="psw"><b>Nhập Lại Mật Khẩu</b><span class="war">*</span>
+                <span class="text-danger ms-3 val"
+                      *ngIf="userForm.get('psFormGroup').hasError('required','confirmPassword')
+                       && (userForm.get('psFormGroup').get('confirmPassword').touched||submitted)">
+                       Vui lòng nhập  lại mật khẩu!!!</span>
+
+                <span class="text-danger ms-3 val"
+                      *ngIf="userForm.get('psFormGroup').hasError('notSame') && userForm.get('psFormGroup').dirty">
+                      Mật khẩu không khớp!!!
+                </span>
+              </label>
+              <input type="password" name="psw" id="psw-repeat" formControlName="confirmPassword">
+            </div>
+
+          </div>
+          <div class="text-center wrapCss">
+            <button type="submit" class="button btnYellow"  style="width: 165px;height: 50px"
+            >Đổi mật khẩu
+            </button>
+          </div>
+        </form>
+
+
+        <div class="main-block mt-3 mb-5">
+          <div id="header" class="bg-warning"><h5 class="text-light pt-3 ms-2">THÔNG TIN TÀI KHOẢN</h5></div>
+          <form [formGroup]="customerForm" (ngSubmit)="updateCustomer()" *ngIf="customerForm">
+            <input type="text" hidden formControlName="username">
+
+            <div>
+              <label for="name" class="text-center"><b>Họ Tên</b><span class="war">*</span>
+                <span class="text-danger ms-3 val"
+                      *ngIf="customerForm.controls.name.hasError('required') && (customerForm.controls.name.touched||submitted) ">
+                         Vui lòng nhập tên!!!
+                </span>
+                <span class="text-danger ms-3"
+                      *ngIf="customerForm.controls.name.hasError('pattern') && (customerForm.controls.name.touched||submitted) ">
+                  Tên khách hàng không được chứa số và ký tự đặc biệt!!!
+                </span>
+              </label>
+              <input type="text" id="name" formControlName="name">
+            </div>
+
+            <div>
+              <label for="birthday"><b>Ngày Sinh</b><span class="war">*</span>
+                <span class="text-danger ms-3 val"
+                      *ngIf="customerForm.controls.dayOfBirth.hasError('required') && (customerForm.controls.dayOfBirth.touched||submitted) ">
+                         Vui lòng nhập ngày sinh!!!
+                </span>
+                <span class="text-danger ms-3 val"
+                      *ngIf="customerForm.controls.dayOfBirth.hasError('invalidDateOfBirth') && (customerForm.controls.dayOfBirth.touched ||submitted) ">
+         Khách hàng phải >= 15 tuổi!!!
+    </span>
+              </label>
+              <input type="date" id="birthday" formControlName="dayOfBirth">
+            </div>
+
+            <div>
+              <label class="mt-2"><b>Giới Tính</b><span class="war">*</span>
+                <span class="text-danger ms-3 val"
+                      *ngIf="customerForm.controls.gender.hasError('required') && (customerForm.controls.gender.touched||submitted) ">
+                         Vui lòng chọn giới tính!!!
+                </span>
+              </label><br>
+              <label><input type="radio" class="m-2 ms-5" value="1" name="gender" formControlName="gender">Nam</label>
+              <label><input type="radio" class="m-2 ms-5" value="2" name="gender" formControlName="gender">Nữ</label>
+              <label class="mb-3"><input type="radio" class="m-2 ms-5" value="0" name="gender"
+                                         formControlName="gender">Khác</label><br>
+            </div>
+
+            <div>
+
+              <label for="email"><b>Email</b><span class="war">*</span>
+                <span class="text-danger ms-3 val"
+                      *ngIf="customerForm.controls.email.hasError('required') && (customerForm.controls.email.touched||submitted) ">
+                         Vui lòng nhập email!!!
+                </span>
+                <span class="text-danger ms-3 val"
+                      *ngIf="!customerForm.controls.email?.valid && (customerForm.controls.email?.touched||submitted)">
+               Email phải đúng định dạng [xxxxxxxx@xxx.xxx]!!!
+                </span>
+              </label>
+              <input type="email" id="email" formControlName="email">
+            </div>
+
+            <div>
+              <label for="code"><b>CMND/CCCD</b><span class="war">*</span>
+                <span class="text-danger ms-3 val"
+                      *ngIf="customerForm.controls.idCard.hasError('required') && (customerForm.controls.idCard.touched||submitted) ">
+                         Vui lòng nhập số CMND/CCCD!!!
+                </span>
+                <span class="text-danger ms-3 val"
+                      *ngIf="!customerForm.controls.idCard?.valid && (customerForm.controls.idCard?.touched||submitted)">
+                  Số CMND/CCCD là 9 hoặc 12 số!!!
+                </span>
+              </label>
+              <input type="text" id="code" formControlName="idCard">
+            </div>
+
+            <div>
+              <label for="phoneNumber"><b>Số Điện Thoại</b><span class="war">*</span>
+                <span class="text-danger ms-3 val"
+                      *ngIf="customerForm.controls.phoneNumber.hasError('required') && (customerForm.controls.phoneNumber.touched||submitted) ">
+                         Vui lòng nhập số điện thoại!!!
+                </span>
+                <span class="text-danger ms-3 val"
+                      *ngIf="!customerForm.controls.phoneNumber?.valid && (customerForm.controls.phoneNumber?.touched||submitted)">
+                    Nhập đúng định dạng [+84x] hoặc [0x] (x là 9 chữ số)!!!
+                </span>
+              </label>
+              <input type="text" id="phoneNumber" formControlName="phoneNumber">
+            </div>
+
+            <div>
+              <label for="address"><b>Địa Chỉ</b><span class="war">*</span>
+                <span class="text-danger ms-3 val"
+                      *ngIf="customerForm.controls.address.hasError('required') && (customerForm.controls.address.touched||submitted) ">
+                         Vui lòng nhập địa chỉ!!!
+                </span>
+              </label>
+              <input type="text" id="address" formControlName="address">
+            </div>
+
+            <div class="text-center wrapCss">
+              <button type="submit" class="button btnYellow">Cập nhật</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2">
+  </div>
+</div>
+
+

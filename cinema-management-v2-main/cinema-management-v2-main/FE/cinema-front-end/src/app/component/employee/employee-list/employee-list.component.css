@@ -1,0 +1,42 @@
+/*@media screen and (max-width: 800px){*/
+/*  #no-more-table tbody,*/
+/*  #no-more-table tr,*/
+/*  #no-more-table td{*/
+/*    display: block;*/
+/*  }*/
+/*  #no-more-table thead tr{*/
+/*    position: absolute;*/
+/*    top: -9999px;*/
+/*    left: -9999px;*/
+/*  }*/
+/*  #no-more-table td{*/
+/*    position: relative;*/
+/*    padding-left: 50%;*/
+/*    border: none;*/
+/*    border-bottom: 1px solid #eee;*/
+/*  }*/
+/*  #no-more-table td:before{*/
+/*    content: attr(data-tittle);*/
+/*    position: absolute;*/
+/*    left: 6px;*/
+/*    font-weight: bold;*/
+/*  }*/
+/*  #no-more-tables tr {*/
+/*    border-bottom: 1px solid #ccc;*/
+/*  }*/
+/*}*/
+/*.pFile, .lab{*/
+/*  color: black;*/
+/*}*/
+
+/*.imgEmployee {*/
+/*  width: 100px;*/
+/*  height: 150px;*/
+/*}*/
+
+
+/*#avatar {*/
+/*  border-radius: 0%;*/
+/*  width: 100px;*/
+/*  height: 150px;*/
+/*}*/

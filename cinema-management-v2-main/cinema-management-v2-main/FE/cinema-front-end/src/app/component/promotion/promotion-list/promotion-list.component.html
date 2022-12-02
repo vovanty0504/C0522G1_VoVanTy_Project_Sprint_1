@@ -1,0 +1,101 @@
+<div class="container-fluid">
+  <div class="row">
+    <h2 class="text-light text-center text-uppercase mt-2">Danh sách khuyến mãi</h2>
+    <div class="col-1"></div>
+    <div class="col-10">
+      <div class="row">
+        <div class="col-3 p-1 ps-1 m-0">
+          <button class="button btnGreen greenBorder" style="height: 39px" [routerLink]="['/promotion/create']">
+            Thêm mới
+          </button>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-2"></div>
+        <div class="col-6 p-1 pe-0">
+          <div class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Tìm tên khuyến mãi"
+                   aria-label="Search" [(ngModel)]="name" maxlength="30">
+            <input [(ngModel)]="dateStart" class="form-control me-2" type="date" placeholder="Tìm ngày bắt đầu"
+                   aria-label="Search">
+            <button class="button btnGreen greenBorder" style="height: 38px" (click)="search()">
+              Tìm
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <table class="table table-sm table-responsive table-responsive-lg table-responsive-sm table-responsive-md "
+               id="table-id" style="text-align: center">
+          <thead class="bg bg-warning">
+          <tr>
+            <th>#</th>
+            <th>Tiêu đề</th>
+            <th>Thời gian bắt đầu</th>
+            <th>Thời gian kết thúc</th>
+            <th>Mức giảm giá (%)</th>
+            <th>Chi tiết</th>
+            <th>Sửa</th>
+            <th>Xóa</th>
+          </tr>
+          </thead>
+          <tbody class="text-black  bg-light">
+          <tr
+            *ngFor="let promotion of (promotionList$ | async); index as i ">
+            <td width="10%" *ngIf="pageNumber>=1">{{i + 1 + (pageNumber - 1) * pageSize}}</td>
+            <td width="10%" *ngIf="pageNumber===0">{{i + 1}}</td>
+            <td width="30%" class="text-lg-start">{{promotion.name | CustompPipe: 30 }}</td>
+            <td width="20%">{{promotion.startTime | date:"dd/MM/yyyy"}}</td>
+            <td width="20%">{{promotion.endTime | date:"dd/MM/yyyy"}}</td>
+            <td width="20%">{{promotion.discount}}</td>
+            <td>
+              <button class="button btnBlue blueBorder"
+                      (click)="showDetail(promotion.image,promotion.detail,promotion.name)">
+                Chi tiết
+              </button>
+            </td>
+            <td>
+              <button class="button btnYellow yellowBorder" [routerLink]="['/promotion/edit/',promotion.id]">
+                Chỉnh sửa
+              </button>
+            </td>
+            <td>
+              <button class="button btnRed redBorder"
+                      (click)="getInfoPromotion(promotion.id,promotion.name)">
+                Xóa
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <div *ngIf="promotionList$ == null" class="text-center">
+          <h2> Không có dữ liệu</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="d-flex justify-content-between ms-0 p-1 ps-1">
+          <select class="form-select" style="width: 12%; height: 35px" [(ngModel)]="pageSize"
+                  (ngModelChange)="paginate()">
+            <option [ngValue]="5"> Hiển thị 5 dòng</option>
+            <option [ngValue]="10">Hiển thị 10 dòng</option>
+            <option [ngValue]="20">Hiển thị 20 dòng</option>
+            <option [ngValue]="totalElements">Hiển thị tất cả</option>
+          </select>
+          <nav aria-label="Page navigation example">
+            <ngb-pagination
+              *ngIf="pageNumber != totalElements"
+              [collectionSize]="(total$ | async)!"
+              [(page)]="pageNumber"
+              [pageSize]="pageSize"
+              [maxSize]="5"
+              (pageChange)="paginate()"
+              [boundaryLinks]="true">
+              <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+            </ngb-pagination>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
+

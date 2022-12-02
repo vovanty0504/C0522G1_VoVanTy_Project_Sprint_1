@@ -1,0 +1,181 @@
+<div class="row">
+  <div class="slides slowFade">
+    <div class="slide">
+      <img src="https://media.voocdn.com/media/image/id/5fe1d553acc399f27d8b457f"/>
+
+    </div>
+    <div class="slide">
+      <img src="https://cinemaxvp.vn/Media/Film/Background_18676a7d-393d-4737-bac3-4038d53100b1.jpg" alt="img"/>
+    </div>
+    <div class="slide">
+      <img src=" https://i.ytimg.com/vi/x0yN2dqhRs8/maxresdefault.jpg" alt="img"/>
+    </div>
+    <div class="slide">
+      <img src="https://media.voocdn.com/media/image/id/5ffffd22acc399f08c8b4570" alt="img"/>
+    </div>
+  </div>
+</div>
+<div class="row mt-3">
+  <h1 class="text-light" style="text-align: center">TOP DOANH THU</h1>
+</div>
+<div class="row" style="height: 1px;background-color: orange"></div>
+<div
+  style="background-image: url(https://kenhhomestay.com/wp-content/uploads/2019/10/galaxy-trung-chanh-4.jpg)">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="cards-list col-lg-8 col-md-10 col-12">
+      <div class="card 1">
+        <a class="card_image" href="https://codepen.io/abhishek747/pen/BbWKVa">
+          <img
+            src="https://bazaarvietnam.vn/wp-content/uploads/2022/03/Harpers-Bazaar-top-phim-chieu-rap-thang-4-2022_02-scaled.jpg"/>
+        </a>
+        <div class="card_title title-white mb-5">
+        </div>
+
+      </div>
+      <div class="card 2">
+        <a class="card_image">
+          <img
+            src="https://i.vietgiaitri.com/2022/11/16/xuat-hien-mon-do-viet-nam-quen-thuoc-trong-black-panther-2-khien-khan-gia-phan-khich-5be-6747609.jpg"/>
+        </a>
+        <div class="card_title title-white mb-5">
+        </div>
+      </div>
+
+      <div class="card 3">
+        <a class="card_image" href="#">
+          <img src="https://sort.vn/upload_images/images/2021/10/26/review-phim-bo-gia.jpg"/>
+        </a>
+        <div class="card_title title-white">
+        </div>
+      </div>
+
+      <div class="card 4">
+        <a class="card_image" href="#">
+          <img src="https://sort.vn/upload_images/images/2021/10/26/review-phim-bo-gia.jpg"/>
+        </a>
+        <div class="card_title">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+<div class="row mt-4">
+  <div class="col-lg-2"></div>
+  <div class="row mb-5 mt-3" style="background: orange;height: 3px"></div>
+  <div class="row">
+    <div class="col-lg-8 col-md-10 col-12">
+      <nav class="navbar navbar-expand-lg navbar-light" style="margin-left: 400px">
+        <div class="container-fluid" id="nav">
+          <div class="collapse navbar-collapse" id="wrapper">
+            <ul class="ul" id="main-menu">
+              <li>
+                <h4 class="text-light" routerLink="">Phim đang
+                  chiếu</h4>
+              </li>
+              <li>
+                <h4 class="text-light" routerLink="/list/premiere">Phim sắp
+                  chiếu </h4>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </nav>
+    </div>
+    <div class="col-lg-4 col-md-8 col-10 pe-3">
+      <div class="header__search">
+        <div class="header__search-input-wrap">
+          <input type="text" class="header__search-input" placeholder="Tìm kiếm phim ..." [(ngModel)]="movieNameSearch">
+        </div>
+        <button class="header__search-btn" (click)="paginate(movieNameSearch, pageSize)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+               class="bi bi-search" viewBox="0 0 16 16">
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+
+<div class="row ul mt-5">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8 col-md-12 col-ms-12">
+    <div class="mb-5 mt-5" *ngIf="!action" style="color: orange;text-align: center">
+      <div class="spinner-border text-warning" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <h1>Phim đang cập nhật. Vui lòng chọn phim khác !</h1>
+    </div>
+    <div class="row" *ngIf="action">
+      <div class="col-lg-4 col-md-6 col-ms-12" *ngFor="let item of (movieList$ |async)">
+        <div class="booking-card1"
+             style="background-image: url({{item.image}})">
+          <div class="book-container">
+            <div class="content">
+              <button class="button btnBlue blueBorder mx-1" routerLink="/detail/{{item.id}}">XEM CHI TIẾT</button>
+              <button class="button btnRed redBorder" (click)="transmissionData(item.id, item.name)"
+                      routerLink="/ticket/booking-ticket">ĐẶT VÉ</button>
+            </div>
+          </div>
+          <div class="informations-container">
+            <h2 class="title">{{item.name}}</h2>
+            <div class="more-information">
+              <div class="info-and-date-container">
+                <div class="box info">
+                  <p>THỜI GIAN PHIM</p>
+                  <p>{{item.filmTime}}</p>
+                </div>
+                <div class="box date" style="color: #0a4870">
+                  <p>NGÀY CÔNG CHIẾU</p>
+                  <p>{{item.showTimeDate}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+<div class="row">
+  <div style="margin-left: 700px" class="mt-3">
+    <button *ngIf="pageSize < (total$ | async)&&action" class="button btnBlue" (click)="nextPage()">XEM THÊM</button>
+  </div>
+</div>
+
+<div class=" mt-4 mb-4 container">
+  <h2 class="mt-5 text-center">KHUYẾN MÃI</h2>
+  <div class="row mb-5 mt-3" style="background: orange;height: 3px"></div>
+  <h3 *ngIf="!content" class="text-danger text-center">Hiện không có chương trình khuyến mãi nào!</h3>
+  <div class="mt-2 d-flex row" *ngIf="content">
+    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" *ngFor="let pro of promotionList">
+      <ul>
+        <li class="booking-card"
+            style="background-image: url({{pro.image}})">
+          <div class="book-container">
+            <div class="content text-center wrapCss">
+              <button type="submit" class="button btnBlue blueBorder" routerLink="/detailPr/{{pro.id}}">Xem chi tiết</button>
+            </div>
+          </div>
+          <div class="informations-container">
+            <h2 class="title">{{pro.name}}</h2>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <div class="content text-center wrapCss" *ngIf="numberRecord < totalRecord - 1 ">
+      <div *ngIf="content">
+        <button type="submit" class="button btnBlue blueBorder" (click)="loadMore()">Xem thêm</button>
+      </div>
+    </div>
+  </div>
+</div>
+

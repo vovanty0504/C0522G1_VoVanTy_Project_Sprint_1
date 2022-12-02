@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
+* {
+  box-sizing: border-box
+}
+
+body {
+  font-family: "Times New Roman";
+  /*background-image: url("https://img.freepik.com/free-vector/gradient-white-monochrome-background_23-2149020688.jpg?w=996&t=st=1667657992~exp=1667658592~hmac=5c616a2742cb1a254bf4d39fd3ba5a66d6400eae5cd1761a792eddbe46ab7e68");*/
+  /*background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),*/
+  /*url("https://media.tourisme-cambresis.fr/84967554-105897.jpg");*/
+  background-size: cover;
+  position: relative;
+  opacity: 0.9;
+}
+#button{
+  height: 30px;
+  width: 80px;
+}
+
+h1, label {
+  color: black;
+}
+
+input[type=text], input[type=password], input[type=number], input[type=email] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  resize: vertical;
+  border-radius: 10px;
+  border: 0;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  height: 40px;
+}
+
+table {
+  box-shadow: 0 8px 15px lightblue;
+}
+
+.btnBlue {
+  width: 20%;
+  padding: 5px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  resize: vertical;
+  border-radius: 10px;
+  border: 0;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  height: 40px;
+}
+
+input[type=date] {
+  width: 30%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  border-radius: 10px;
+  border: 0;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  height: 40px;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  outline: none;
+}
+
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity: 1;
+}
+
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+.signupbtn {
+  float: left;
+  width: 30%;
+  border: 0;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  height: 50px;
+  text-align: center;
+  margin-left: 35%;
+}
+
+.container {
+  padding: 16px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+input[type=radio] {
+  display: inline;
+
+}
+
+form {
+  max-width: 700px;
+  margin: auto;
+  border: none;
+  /*border-radius: 7px;*/
+  padding: 40px;
+  background-color: #f2f2f2;
+}
+
+
+.clearfix {
+  max-width: 500px;
+  margin: auto;
+}
+
+a:hover {
+  text-decoration: underline red;
+}
+
+.head {
+  max-width: 700px;
+  background-color: orange;
+  height: 60px;
+}
+
+.signupbtn:hover {
+  background-color: #55ff00;
+}
+
+img {
+  border-radius: 100px;
+}
+
+.btn {
+  width: 150px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.gender {
+  margin-right: 40px;
+  width: 150px;
+}
+
+
+.info {
+  border-radius: 15px;
+}
+
+#head, #header {
+  max-width: 700px;
+  margin: auto;
+  background-color: #FDA50F;
+  height: 60px;
+}
+
+.data-margin {
+  margin-right: 35px;
+}
+
+.data-margin .birthday {
+  margin-left: 8px;
+}
+
+.button {
+  width: 100px;
+  height: 45px;
+  font-family: "Times New Roman", sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.btnRed{
+  width: 100px;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+}
+.btnBlue:hover {
+  background-color: #276dfd;
+  box-shadow: 0 15px 20px blue;
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.pagination-container button {
+  width: 40px;
+}
+
+.btnYellow:hover {
+  background-color: #ffc100;
+  box-shadow: 0 15px 20px yellow;
+  color: black;
+  transform: translateY(-7px);
+}
+
+.btnRed:hover {
+  background-color: #ea4646;
+  box-shadow: 0 15px 20px red;
+  color: #fff;
+  transform: translateY(-7px);
+
+}
+
+.btnGreen:hover {
+  background-color: #22bd22;
+  box-shadow: 0 15px 20px green;
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+hr{
+  color: black;
+}
+

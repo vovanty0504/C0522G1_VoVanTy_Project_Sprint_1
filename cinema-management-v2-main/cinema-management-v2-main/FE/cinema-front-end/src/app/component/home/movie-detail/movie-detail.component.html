@@ -1,0 +1,79 @@
+<div class="container-fluid bgcolor">
+  <div class="row" *ngIf="movie !=null">
+    <div class="col-lg-2 mt-5">
+    </div>
+    <div class="col-lg-8 mt-5">
+      <div class="card mb-3 bgcolor">
+        <div class="row">
+          <div class="col-lg-8 mt-5">
+            <div class="row reposiveIframe">
+              <iframe class="e2e-iframe-trusted-src mx-2 responsive-iframe"
+                      [src]="url"></iframe>
+            </div>
+            <div class="row mt-4">
+              <div class="col-lg-2 col-sm-2 text-light">
+                <button
+                  class="mt-3 mx-2 btnBlue ddcard btn btn-outline-primary{{ ctrl.disabled ? 'danger' : 'success'}} me-2"
+                  (click)="toggle()">
+                  {{ ctrl.disabled ? "Đánh giá" : " Đánh giá" }}
+                </button>
+                <div class="mx-2 text-light mt-3"><b>Sao: {{ ctrl.value }}/5★</b></div>
+              </div>
+              <div class="col-lg-5 col-sm-5 text-light mt-2">
+                <ngb-rating [formControl]="ctrl" max="5">
+                  <ng-template let-fill="fill">
+                          <span class="defaultHeart" [class.filled]="fill === 100">
+                    <span [class.filled]="fill === 100" [class.notfilled]="fill === 0">★</span>
+                          </span>
+                  </ng-template>
+                </ngb-rating>
+                <div *ngIf="ctrl.valid" class="text-success mt-2">Cảm ơn đã đánh giá</div>
+                <div *ngIf="ctrl.invalid" class="text-danger mt-2">Vui lòng đánh giá</div>
+              </div>
+              <div class="col-lg-3 col-sm-3 mt-3">
+                <div class="row">
+                  <button type="button" class=" ddcard btnBlue btn btn-outline-primary">
+                    <a style="text-decoration:none; color: black"
+                       href="https://www.facebook.com/sharer/sharer.php?u=https://www.lottecinemavn.com/">Chia sẻ </a>
+                  </button>
+                </div>
+              </div>
+              <div class="col-lg-2 col-sm-2 mt-3">
+                <div>
+                  <button type="button" class=" ddcard btnGreen btn btn-outline-danger new"
+                          (click)="transmissionData()" routerLink="/ticket/booking-ticket">Đặt vé
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 text-light">
+            <div class="card-body mt-3 mx-3 ">
+              <div class="row">
+                <div class="card-text text-center"><h5>{{movie.name}}</h5></div>
+                <img class="zoom mt-2" width="250px" height="300px" src="{{movie.image}}">
+              </div>
+
+              <div class="row">
+                <div class="card-text">Thể loại:<b>{{movie.movieType}}</b></div>
+                <div class="card-text">Ngày chiếu: <b>{{movie.startDay}}</b></div>
+                <div class="card-text">Ngày kết thúc: <b>{{movie.endDay}}</b></div>
+                <div class="card-text">Thời lượng: <b>{{movie.filmTime}} phút</b></div>
+                <div class="card-text">Diễn viên: <b>{{movie.director}}</b></div>
+                <div class="card-text">Hãng: <b>{{movie.filmStudio}}</b></div>
+                <div class="card-text">Nhà sản xuất: <b>{{movie.actor}}</b></div>
+                <div class="card-text">Phiên bản: <b>{{movie.version}}</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row text-light ">
+        <div><h4>Nội dung</h4>
+          <p>{{movie.content}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>

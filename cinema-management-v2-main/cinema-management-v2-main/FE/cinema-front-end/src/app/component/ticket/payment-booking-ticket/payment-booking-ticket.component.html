@@ -1,0 +1,103 @@
+<div *ngIf="arrayTicket != undefined || arrayTicket != null; else noContent" class="bodyc">
+  <div class="container-fluid d-flex" style="color: white">
+    <div class="container">
+      <div class="row">
+        <div class="dashboard-wrapper">
+          <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10 dashboard-content user-profile">
+              <div class="panel panel-default">
+                <div class="panel-heading"><h4>THÔNG TIN ĐẶT VÉ</h4></div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-sm-5 col-md-4 user-img">
+                      <img style="width: 100%; height: 380px"
+                           src="{{arrayTicket[0].image}}"
+                           class="img-responsive" alt="user-img"/>
+                    </div><!-- end columns -->
+
+                    <div class="col-sm-7 col-md-8  user-detail">
+
+                      <ul class="list-unstyled">
+                        <li><h4>{{arrayTicket[0].nameMovie}}</h4></li>
+                        <hr>
+                        <li><b style="color: orange">Phòng chiếu: </b> {{arrayTicket[0].nameRoom}}</li>
+                        <br>
+                        <li><b style="color: orange">Ngày chiếu: </b> {{arrayTicket[0].dateProjection | date: "dd/MM/yyyy"}}</li>
+                        <br>
+                        <li><b style="color: orange">Giờ chiếu: </b> {{arrayTicket[0].startTime}}</li>
+                        <br>
+                        <li>
+                          <table>
+                            <tr>
+                              <td>
+                                <b style="color: orange">Ghế: </b>
+                              </td>
+                              <td *ngFor="let item of arrayTicket" class="pe-1" >
+                                {{item.nameSeat}}
+                              </td>
+                            </tr>
+                          </table>
+                        </li>
+                        <br>
+                        <li>
+                          <table>
+                            <tr>
+                              <td>
+                                <b style="color: orange">Giá: </b>
+                              </td>
+                              <td>
+
+                              </td>
+                            </tr>
+                            <tr *ngFor="let item of arrayTicket;" style="transform: translateY(-22px)">
+                              <td></td>
+                              <td>&nbsp;{{item.nameSeat}}: {{item.price | number}} VND</td>
+                            </tr>
+                          </table>
+                        </li>
+                        <li><b style="color: orange">Tổng cộng:</b> {{total | number}} VND</li>
+                        <br>
+                      </ul>
+
+                    </div><!-- end columns -->
+                  </div><!-- end row -->
+                  <div class="row">
+                    <div class="col-sm-5 col-md-4 user-img">
+                      <!---->
+                    </div><!-- end columns -->
+
+                    <div class="col-sm-7 col-md-8  user-detail">
+                      <ul class="list-unstyled">
+                        <li><h4 id="accountBooking">Thông tin tài khoản đặt vé</h4></li>
+                        <hr>
+                        <li><b style="color: orange">Họ tên: </b> {{arrayTicket[0].nameCustomer}}</li>
+                        <br>
+                        <li><b style="color: orange">Email: </b> {{arrayTicket[0].email}}</li>
+                        <br>
+                        <li><b style="color: orange">CMND: </b> {{arrayTicket[0].idCard}}</li>
+                        <br>
+                        <li><b style="color: orange">Số điện thoại: </b> {{arrayTicket[0].phoneNumber}}</li>
+                        <br>
+                        <li id="note" style="transform: translateX(-10px); font-size: 17px"></li>
+                      </ul>
+                      <p><i>Vui lòng đến lấy vé trước thời gian chiếu phim 30 phút. Sau thời gian đó vé sẽ tự động hủy
+                        !</i></p>
+
+                      <div id="myPaypal" (click)="confirmUpdate()" style="width: 180px; height: 45px"></div>
+                      <br>
+
+
+                    </div><!-- end columns -->
+                  </div><!-- end row -->
+                </div><!-- end panel-body -->
+              </div><!-- end panel-detault -->
+            </div><!-- end columns -->
+          </div><!-- end row -->
+        </div><!-- end dashboard-wrapper -->
+      </div><!-- end columns -->
+    </div><!-- end row -->
+  </div><!-- end container -->
+</div>
+<ng-template #noContent>
+  <p>Không có dữ liệu</p>
+</ng-template>

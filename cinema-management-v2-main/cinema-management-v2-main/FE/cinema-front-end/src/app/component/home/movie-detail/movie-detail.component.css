@@ -1,0 +1,91 @@
+.bgcolor {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+  url("https://images.unsplash.com/photo-1596445836561-991bcd39a86d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80");
+  background-size: cover;
+  position: relative;
+  opacity: 0.9;
+  font-family: "Times New Roman";
+}
+button.new {
+  width: 80px;
+  margin-right: 180px;
+}
+button.ddcard {
+  height: 35px;
+  width: 70px;
+}
+.btnYellow {
+  background-color: white;
+}
+.btnYellow:hover {
+  background-color: #ffc100;
+  color: black;
+  transform: translateY(-7px);
+}
+.btnBlue {
+  background-color: white;
+}
+.btnBlue:hover {
+  background-color: #0a53be;
+  color: black;
+  transform: translateY(-7px);
+}
+.btnGreen {
+  background-color: white;
+}
+.btnGreen:hover {
+  background-color: #be0a0a;
+  color: black;
+  transform: translateY(-7px);
+}
+.card-text {
+  margin-top: 5px;
+}
+p {
+  text-align: justify;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+.filled {
+  color: yellow;
+}
+.notfilled {
+  color: #6e6a6a;
+}
+.defaultHeart {
+  position: relative;
+  /*display: inline-block;*/
+  color: gray;
+  font-size: 35px;
+}
+/*image*/
+* {
+  box-sizing: border-box;
+}
+.zoom {
+  transition: transform .2s;
+  margin: 0 auto;
+}
+.zoom:hover {
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.2);
+}
+.reposiveIframe {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 75%; /* 16:9 Aspect Ratio */
+}
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}

@@ -1,0 +1,154 @@
+.body-booking {
+  /*background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),*/
+  /*url("https://media.tourisme-cambresis.fr/84967554-105897.jpg");*/
+  /*background-size: cover;*/
+  /*position: relative;*/
+  /*opacity: 0.9;*/
+  font-family: "Times New Roman", sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper-container {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  width: 400px;
+  height: 420px;
+  box-shadow: 0 8px 15px lightblue;
+}
+
+.swiper-content {
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-content .hero {
+  width: 100%;
+  height: 175px;
+  position: relative;
+}
+
+.swiper-content .hero .calendar {
+  width: 60px;
+  height: 60px;
+  float: right;
+  background-color: darkred;
+  border-radius: 50%;
+  margin-right: 15px;
+  margin-top: 15px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-content .hero .calendar .date {
+  font-size: 1.2rem;
+  line-height: 1.3rem;
+}
+
+.swiper-content .hero .calendar .month {
+  font-size: 0.8rem;
+}
+
+.swiper-content .hero .photo-btn {
+  position: absolute;
+  bottom: 0;
+  width: 100px;
+  height: 40px;
+  background-color: darkred;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  transition: 0.2s all;
+  cursor: pointer;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.swiper-content .hero .photo-btn .text {
+  text-align: center;
+  line-height: 40px;
+}
+
+.swiper-content .hero.new-york {
+  background: url("https://qph.cf2.quoracdn.net/main-qimg-7a91fe45363802293e19d324068a8241-lq") center;
+  background-size: cover;
+}
+
+.swiper-content .hero.san-fran {
+  background: url("https://i.ytimg.com/vi/bRTrC08Kzz0/maxresdefault.jpg") center;
+  background-size: cover;
+}
+
+.swiper-content .hero.chicago {
+  background: url("https://tintuc-divineshop.cdn.vccloud.vn/wp-content/uploads/2022/08/muoi-loi-nguyen-tro-lai-lo-dien-nguoi-tinh-man-anh-cua-chi-pu-trong-phim-moi_62f375add6342.jpeg") center;
+  background-size: cover;
+}
+
+.swiper-content .copy {
+  padding: 20px;
+}
+
+.wrapCss {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*.button {*/
+/*  width: 140px;*/
+/*  height: 45px;*/
+/*  font-family: "Times New Roman", sans-serif;*/
+/*  font-size: 14px;*/
+/*  text-transform: uppercase;*/
+/*  letter-spacing: 2.5px;*/
+/*  font-weight: 500;*/
+/*  color: #000;*/
+/*  background-color: #fff;*/
+/*  border: none;*/
+/*  border-radius: 5px;*/
+/*  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);*/
+/*  transition: all 0.3s ease 0s;*/
+/*  cursor: pointer;*/
+/*  outline: none;*/
+/*}*/
+
+/*.btnBlue:hover {*/
+/*  background-color: #276dfd;*/
+/*  box-shadow: 0 15px 20px blue;*/
+/*  color: #fff;*/
+/*  transform: translateY(-7px);*/
+/*}*/
+
+/*.btnYellow:hover {*/
+/*  background-color: #ffc100;*/
+/*  box-shadow: 0 15px 20px yellow;*/
+/*  color: black;*/
+/*  transform: translateY(-7px);*/
+/*}*/
+
+/*.btnRed:hover {*/
+/*  background-color: #ea4646;*/
+/*  box-shadow: 0 15px 20px red;*/
+/*  color: #fff;*/
+/*  transform: translateY(-7px);*/
+/*}*/
+
+/*.btnGreen:hover {*/
+/*  background-color: #22bd22;*/
+/*  box-shadow: 0 15px 20px green;*/
+/*  color: #fff;*/
+/*  transform: translateY(-7px);*/
+/*}*/

@@ -1,0 +1,120 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-lg-4 col-sm-6"></div>
+
+    <div class="col-lg-4 col-md-12 col-sm-6">
+
+      <div class="row">
+        <h2 style="margin-top: 20px" class="text-center fw-bold text-white"><span>
+                    CHI TIẾT PHÒNG CHIẾU {{nameRoom}}</span></h2>
+        <ul class="showcase1 pb-3">
+          <li>
+            <div class="seat"></div>
+            <div id="seatNormal" class="text-white">Ghế Thường</div>
+          </li>
+          <li>
+            <div class="seat selected"></div>
+            <div class="text-white">Ghế Vip</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="row">
+        <div>
+          <div class="container">
+            <div class="screen"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-8">
+          <div>
+            <span class="symbol">A</span>
+            <span *ngFor="let seat of seatList1">
+              <span (click)="updateSeatType(seat.id, seat.seatTypeId)" class="seat selected text-dark ps-1 h6"
+                    *ngIf="seat.seatName.includes('A') && seat.seatTypeName == 'Ghế Vip'">{{seat.seatName}}</span>
+              <span (click)="updateSeatType(seat.id, seat.seatTypeId)" class="seat text-dark ps-1 h6"
+                    *ngIf="seat.seatName.includes('A') && seat.seatTypeName != 'Ghế Vip'">{{seat.seatName}}</span>
+            </span>
+          </div>
+          <div>
+            <span class="symbol">B</span>
+            <span *ngFor="let seat of seatList1">
+              <span (click)="updateSeatType(seat.id, seat.seatTypeId)" class="seat selected text-dark ps-1 h6"
+                    *ngIf="seat.seatName.includes('B') && seat.seatTypeName == 'Ghế Vip'" >{{seat.seatName}}</span>
+              <span (click)="updateSeatType(seat.id, seat.seatTypeId)" class="seat text-dark ps-1 h6"
+                    *ngIf="seat.seatName.includes('B') && seat.seatTypeName != 'Ghế Vip'" >{{seat.seatName}}</span>
+            </span>
+          </div>
+          <div>
+            <span class="symbol">C</span>
+            <span *ngFor="let seat of seatList1">
+              <span (click)="updateSeatType(seat.id, seat.seatTypeId)" class="seat selected text-dark ps-1 h6"
+                    *ngIf="seat.seatName.includes('C') && seat.seatTypeName == 'Ghế Vip'">{{seat.seatName}}</span>
+              <span (click)="updateSeatType(seat.id, seat.seatTypeId)" class="seat text-dark ps-1 h6"
+                    *ngIf="seat.seatName.includes('C') && seat.seatTypeName != 'Ghế Vip'">{{seat.seatName}}</span>
+            </span>
+          </div>
+          <div>
+            <span class="symbol">D</span>
+            <span *ngFor="let seat of seatList1">
+              <span (click)="updateSeatType(seat.id, seat.seatTypeId)" class="seat selected text-dark ps-1 h6"
+                    *ngIf="seat.seatName.includes('D') && seat.seatTypeName == 'Ghế Vip'">{{seat.seatName}}</span>
+              <span (click)="updateSeatType(seat.id, seat.seatTypeId)" class="seat text-dark ps-1 h6"
+                    *ngIf="seat.seatName.includes('D') && seat.seatTypeName != 'Ghế Vip'">{{seat.seatName}}</span>
+            </span>
+          </div>
+          <div>
+            <span class="symbol-1">E</span>
+            <span *ngFor="let seat of seatList1">
+              <span (click)="updateSeatType(seat.id, seat.seatTypeId)" class="seat selected text-dark ps-1 h6"
+                    *ngIf="seat.seatName.includes('E') && seat.seatTypeName == 'Ghế Vip'">{{seat.seatName}}</span>
+              <span (click)="updateSeatType(seat.id, seat.seatTypeId)" class="seat text-dark ps-1 h6"
+                    *ngIf="seat.seatName.includes('E') && seat.seatTypeName != 'Ghế Vip'">{{seat.seatName}}</span>
+            </span>
+          </div>
+          <div>
+            <span class="symbol-1">F</span>
+            <span *ngFor="let seat of seatList1">
+              <span (click)="updateSeatType(seat.id, seat.seatTypeId)" class="seat selected text-dark ps-1 h6"
+                    *ngIf="seat.seatName.includes('F') && seat.seatTypeName == 'Ghế Vip'">{{seat.seatName}}</span>
+              <span (click)="updateSeatType(seat.id, seat.seatTypeId)" class="seat text-dark ps-1 h6"
+                    *ngIf="seat.seatName.includes('F') && seat.seatTypeName != 'Ghế Vip'">{{seat.seatName}}</span>
+            </span>
+          </div>
+          <div>
+            <span class="symbol">G</span>
+            <span *ngFor="let seat of seatList1">
+              <span (click)="updateSeatType(seat.id, seat.seatTypeId)" class="seat selected text-dark ps-1 h6"
+                    *ngIf="seat.seatName.includes('G') && seat.seatTypeName == 'Ghế Vip'">{{seat.seatName}}</span>
+              <span (click)="updateSeatType(seat.id, seat.seatTypeId)" class="seat text-dark ps-1 h6"
+                    *ngIf="seat.seatName.includes('G') && seat.seatTypeName != 'Ghế Vip'">{{seat.seatName}}</span>
+            </span>
+          </div>
+          <div>
+            <span class="symbol">H</span>
+            <span *ngFor="let seat of seatList1">
+              <span (click)="updateSeatType(seat.id, seat.seatTypeId)" class="seat selected text-dark ps-1 h6"
+                    *ngIf="seat.seatName.includes('H') && seat.seatTypeName == 'Ghế Vip'">{{seat.seatName}}</span>
+              <span (click)="updateSeatType(seat.id, seat.seatTypeId)" class="seat text-dark ps-1 h6"
+                    *ngIf="seat.seatName.includes('H') && seat.seatTypeName != 'Ghế Vip'">{{seat.seatName}}</span>
+            </span>
+          </div>
+        </div>
+        <div class="col-2">
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-bottom: 20px">
+        <button style="margin-top: 20px" class="button btnYellow me-2" routerLink="/listRoom">Quay lại</button>
+      </div>
+    </div>
+
+    <div class="col-lg-4"></div>
+
+  </div>
+</div>

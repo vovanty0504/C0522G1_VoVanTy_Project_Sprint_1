@@ -1,0 +1,111 @@
+<div class="row">
+  <div class="col-lg-1"></div>
+  <div class="col-lg-10">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h2>DANH SÁCH PHIM</h2>
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div class="col-3 p-1 ms-0 ps-0">
+        <button class="button btnGreen greenBorder" style="height: 39px" routerLink="/movie/add">
+          Thêm mới
+        </button>
+      </div>
+      <div class="col-lg-1 col-sm-4"></div>
+      <div class="col-lg-2 col-sm-4"></div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-3 col-sm-4 p-1 pe-0">
+        <div class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Tìm tên phim"
+                 aria-label="Search" [(ngModel)]="name">
+          <button (click)="getAllMovie()" class="button btnGreen greenBorder" style="height: 38px" type="submit">
+            Tìm
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row p-0 m-0 table-responsive">
+      <div *ngIf="!action">
+        <h2 class="text-center">Không tìm thấy dữ liệu</h2>
+      </div>
+      <table *ngIf="action" class="table text-center" id="no-more-table">
+        <thead class="bg bg-warning">
+        <tr>
+          <th>STT</th>
+          <th>Phim</th>
+          <th>Ngày khởi chiếu</th>
+          <th>Hãng phim</th>
+          <th>Thời lượng</th>
+          <th>Phiên bản</th>
+          <th>Sửa</th>
+          <th>Xoá</th>
+        </tr>
+        </thead>
+
+        <tbody class="text-black  bg-light">
+        <tr *ngFor="let movie of (movieList$ | async); index as i">
+          <td data-tittle="STT">{{i + 1 + (page - 1) * size}}</td>
+          <td data-tittle="Phim" class="text-start">{{movie.name}}</td>
+          <td data-tittle="Ngày khởi chiếu">{{movie.startDay |date: "dd/MM/yyyy"}}</td>
+          <td data-tittle="Hãng phim">{{movie.filmStudio}}</td>
+          <td data-tittle="Thời lượng">{{movie.filmTime}} phút</td>
+          <td data-tittle="Phiên bản">
+            {{movie.version}}D
+          </td>
+          <td data-tittle="Sửa">
+            <div class="text-center wrapCss">
+              <button class="button btnYellow yellowBorder" routerLink="/movie/edit/{{movie.id}}">
+                Chỉnh sửa
+              </button>
+            </div>
+          </td>
+          <td data-tittle="Xoá">
+            <div class="text-center wrapCss">
+              <button class="button btnRed redBorder" (click)="confirmDelete(movie)">Xóa</button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-2 col-sm-4 ms-0">
+        <div *ngIf="action" class="container p-0 text-center">
+          <span class="fw-bold text-light"></span>
+          <select class="form-select form-select-sm" name="state" id="maxRows " [(ngModel)]="size"
+                  (ngModelChange)="getAllMovie()">
+            <option [ngValue]=" 5">Chọn số lượng hiển thị</option>
+            <option [ngValue]="10">10</option>
+            <option [ngValue]="20">20</option>
+            <option [ngValue]="5000">Hiển thị tất cả</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-4 "></div>
+      <div class="col-lg-4 "></div>
+      <div class="col-lg-2 col-sm-4 ">
+        <div *ngIf="action" class='pagination-container'>
+          <nav aria-label="Page navigation example">
+            <ngb-pagination
+              [collectionSize]="(total$| async)!"
+              [(page)]="page"
+              [maxSize]="5"
+              [pageSize]="size"
+              (pageChange)="getAllMovie()"
+            >
+              <ng-template ngbPaginationNumber let-page>{{page}}</ng-template>
+            </ngb-pagination>
+
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-1"></div>
+</div>

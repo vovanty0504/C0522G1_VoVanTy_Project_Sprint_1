@@ -1,0 +1,647 @@
+<div class="p-5 body-booking" *ngIf="seatDetails$ !== undefined">
+  <h2 class="text-center fw-bold text-light"><span style="box-shadow: 0 8px 15px lightblue; padding: 5px">
+        ĐẶT GHẾ</span></h2>
+
+  <table cellpadding="5" class="movie-container">
+    <tr>
+      <td>Tên phim:</td>
+      <td class="text-info h6">{{movieChoose.name | uppercase}} </td>
+      <td class="ps-5">Ngày chiếu:</td>
+      <td class="text-info h6">{{showDateChoose.showDate | date: "dd/MM/yyyy"}} </td>
+    </tr>
+    <tr>
+      <td>Giờ chiếu:</td>
+      <td class="text-info h6">{{showTimeChoose.times.slice(0, 5)}} </td>
+      <td class="ps-5">Phòng:</td>
+      <td class="text-info h6">{{showTimeChoose.room}} </td>
+    </tr>
+  </table>
+
+  <ul class="showcase pb-3">
+    <li>
+      <div class="seat"></div>
+      <small class="text-light">Ghế thường</small>
+    </li>
+    <li>
+      <div class="seat vip"></div>
+      <small class="text-light">Ghế vip</small>
+    </li>
+    <li>
+      <div class="seat selected"></div>
+      <small class="text-light">Ghế đã chọn</small>
+    </li>
+    <li>
+      <div class="seat occupied"></div>
+      <small class="text-light">Ghế đã đặt</small>
+    </li>
+  </ul>
+
+
+  <div class="text-center mb-3">
+    <div class="container">
+      <div class="screen"></div>
+      <div class="pt-2">
+        <div class="row">
+          <div class="seat {{selectTemp[0]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[0],0)"
+               *ngIf="seatDetails$[0].seatStatus === false && seatDetails$[0].seatTypeId === 1">
+            {{seatDetails$[0].seatName}}</div>
+          <div class="seat vip {{selectTemp[0]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[0],0)"
+               *ngIf="seatDetails$[0].seatStatus === false && seatDetails$[0].seatTypeId === 2">
+            {{seatDetails$[0].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[0].seatStatus === true">
+            {{seatDetails$[0].seatName}}</div>
+
+          <div class="seat {{selectTemp[1]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[1],1)"
+               *ngIf="seatDetails$[1].seatStatus === false && seatDetails$[1].seatTypeId === 1">
+            {{seatDetails$[1].seatName}}</div>
+          <div class="seat vip {{selectTemp[1]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[1],1)"
+               *ngIf="seatDetails$[1].seatStatus === false && seatDetails$[1].seatTypeId === 2">
+            {{seatDetails$[1].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[1].seatStatus === true">
+            {{seatDetails$[1].seatName}}</div>
+
+          <div class="seat {{selectTemp[2]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[2],2)"
+               *ngIf="seatDetails$[2].seatStatus === false && seatDetails$[2].seatTypeId === 1">
+            {{seatDetails$[2].seatName}}</div>
+          <div class="seat vip {{selectTemp[2]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[2],2)"
+               *ngIf="seatDetails$[2].seatStatus === false && seatDetails$[2].seatTypeId === 2">
+            {{seatDetails$[2].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[2].seatStatus === true">
+            {{seatDetails$[2].seatName}}</div>
+
+          <div class="seat {{selectTemp[3]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[3],3)"
+               *ngIf="seatDetails$[3].seatStatus === false && seatDetails$[3].seatTypeId === 1">
+            {{seatDetails$[3].seatName}}</div>
+          <div class="seat vip {{selectTemp[3]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[3],3)"
+               *ngIf="seatDetails$[3].seatStatus === false && seatDetails$[3].seatTypeId === 2">
+            {{seatDetails$[3].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[3].seatStatus === true">
+            {{seatDetails$[3].seatName}}</div>
+
+          <div class="seat {{selectTemp[4]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[4],4)"
+               *ngIf="seatDetails$[4].seatStatus === false && seatDetails$[4].seatTypeId === 1">
+            {{seatDetails$[4].seatName}}</div>
+          <div class="seat vip {{selectTemp[4]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[4],4)"
+               *ngIf="seatDetails$[4].seatStatus === false && seatDetails$[4].seatTypeId === 2">
+            {{seatDetails$[4].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[4].seatStatus === true">
+            {{seatDetails$[4].seatName}}</div>
+
+          <div class="seat {{selectTemp[5]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[5],5)"
+               *ngIf="seatDetails$[5].seatStatus === false && seatDetails$[5].seatTypeId === 1">
+            {{seatDetails$[5].seatName}}</div>
+          <div class="seat vip {{selectTemp[5]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[5],5)"
+               *ngIf="seatDetails$[5].seatStatus === false && seatDetails$[5].seatTypeId === 2">
+            {{seatDetails$[5].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[5].seatStatus === true">
+            {{seatDetails$[5].seatName}}</div>
+
+          <div class="seat {{selectTemp[6]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[6],6)"
+               *ngIf="seatDetails$[6].seatStatus === false && seatDetails$[6].seatTypeId === 1">
+            {{seatDetails$[6].seatName}}</div>
+          <div class="seat vip {{selectTemp[6]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[6],6)"
+               *ngIf="seatDetails$[6].seatStatus === false && seatDetails$[6].seatTypeId === 2">
+            {{seatDetails$[6].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[6].seatStatus === true">
+            {{seatDetails$[6].seatName}}</div>
+
+          <div class="seat {{selectTemp[7]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[7],7)"
+               *ngIf="seatDetails$[7].seatStatus === false && seatDetails$[7].seatTypeId === 1">
+            {{seatDetails$[7].seatName}}</div>
+          <div class="seat vip {{selectTemp[7]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[7],7)"
+               *ngIf="seatDetails$[7].seatStatus === false && seatDetails$[7].seatTypeId === 2">
+            {{seatDetails$[7].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[7].seatStatus === true">
+            {{seatDetails$[7].seatName}}</div>
+        </div>
+
+        <div class="row">
+          <div class="seat {{selectTemp[8]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[8],8)"
+               *ngIf="seatDetails$[8].seatStatus === false && seatDetails$[8].seatTypeId === 1">
+            {{seatDetails$[8].seatName}}</div>
+          <div class="seat vip {{selectTemp[8]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[8],8)"
+               *ngIf="seatDetails$[8].seatStatus === false && seatDetails$[8].seatTypeId === 2">
+            {{seatDetails$[8].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[8].seatStatus === true">
+            {{seatDetails$[8].seatName}}</div>
+
+          <div class="seat {{selectTemp[9]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[9],9)"
+               *ngIf="seatDetails$[9].seatStatus === false && seatDetails$[9].seatTypeId === 1">
+            {{seatDetails$[9].seatName}}</div>
+          <div class="seat vip {{selectTemp[9]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[9],9)"
+               *ngIf="seatDetails$[9].seatStatus === false && seatDetails$[9].seatTypeId === 2">
+            {{seatDetails$[9].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[9].seatStatus === true">
+            {{seatDetails$[9].seatName}}</div>
+
+          <div class="seat {{selectTemp[10]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[10],10)"
+               *ngIf="seatDetails$[10].seatStatus === false && seatDetails$[10].seatTypeId === 1">
+            {{seatDetails$[10].seatName}}</div>
+          <div class="seat vip {{selectTemp[10]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[10],10)"
+               *ngIf="seatDetails$[10].seatStatus === false && seatDetails$[10].seatTypeId === 2">
+            {{seatDetails$[10].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[10].seatStatus === true">
+            {{seatDetails$[10].seatName}}</div>
+
+          <div class="seat {{selectTemp[11]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[11],11)"
+               *ngIf="seatDetails$[11].seatStatus === false && seatDetails$[11].seatTypeId === 1">
+            {{seatDetails$[11].seatName}}</div>
+          <div class="seat vip {{selectTemp[11]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[11],11)"
+               *ngIf="seatDetails$[11].seatStatus === false && seatDetails$[11].seatTypeId === 2">
+            {{seatDetails$[11].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[11].seatStatus === true">
+            {{seatDetails$[11].seatName}}</div>
+
+          <div class="seat {{selectTemp[12]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[12],12)"
+               *ngIf="seatDetails$[12].seatStatus === false && seatDetails$[12].seatTypeId === 1">
+            {{seatDetails$[12].seatName}}</div>
+          <div class="seat vip {{selectTemp[12]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[12],12)"
+               *ngIf="seatDetails$[12].seatStatus === false && seatDetails$[12].seatTypeId === 2">
+            {{seatDetails$[12].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[12].seatStatus === true">
+            {{seatDetails$[12].seatName}}</div>
+
+          <div class="seat {{selectTemp[13]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[13],13)"
+               *ngIf="seatDetails$[13].seatStatus === false && seatDetails$[13].seatTypeId === 1">
+            {{seatDetails$[13].seatName}}</div>
+          <div class="seat vip {{selectTemp[13]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[13],13)"
+               *ngIf="seatDetails$[13].seatStatus === false && seatDetails$[13].seatTypeId === 2">
+            {{seatDetails$[13].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[13].seatStatus === true">
+            {{seatDetails$[13].seatName}}</div>
+
+          <div class="seat {{selectTemp[14]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[14],14)"
+               *ngIf="seatDetails$[14].seatStatus === false && seatDetails$[14].seatTypeId === 1">
+            {{seatDetails$[14].seatName}}</div>
+          <div class="seat vip {{selectTemp[14]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[14],14)"
+               *ngIf="seatDetails$[14].seatStatus === false && seatDetails$[14].seatTypeId === 2">
+            {{seatDetails$[14].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[14].seatStatus === true">
+            {{seatDetails$[14].seatName}}</div>
+
+          <div class="seat {{selectTemp[15]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[15],15)"
+               *ngIf="seatDetails$[15].seatStatus === false && seatDetails$[15].seatTypeId === 1">
+            {{seatDetails$[15].seatName}}</div>
+          <div class="seat vip {{selectTemp[15]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[15],15)"
+               *ngIf="seatDetails$[15].seatStatus === false && seatDetails$[15].seatTypeId === 2">
+            {{seatDetails$[15].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[15].seatStatus === true">
+            {{seatDetails$[15].seatName}}</div>
+        </div>
+
+        <div class="row">
+          <div class="seat {{selectTemp[16]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[16],16)"
+               *ngIf="seatDetails$[16].seatStatus === false && seatDetails$[16].seatTypeId === 1">
+            {{seatDetails$[16].seatName}}</div>
+          <div class="seat vip {{selectTemp[16]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[16],16)"
+               *ngIf="seatDetails$[16].seatStatus === false && seatDetails$[16].seatTypeId === 2">
+            {{seatDetails$[16].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[16].seatStatus === true">
+            {{seatDetails$[16].seatName}}</div>
+
+          <div class="seat {{selectTemp[17]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[17],17)"
+               *ngIf="seatDetails$[17].seatStatus === false && seatDetails$[17].seatTypeId === 1">
+            {{seatDetails$[17].seatName}}</div>
+          <div class="seat vip {{selectTemp[17]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[17],17)"
+               *ngIf="seatDetails$[17].seatStatus === false && seatDetails$[17].seatTypeId === 2">
+            {{seatDetails$[17].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[17].seatStatus === true">
+            {{seatDetails$[17].seatName}}</div>
+
+          <div class="seat {{selectTemp[18]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[18],18)"
+               *ngIf="seatDetails$[18].seatStatus === false && seatDetails$[18].seatTypeId === 1">
+            {{seatDetails$[18].seatName}}</div>
+          <div class="seat vip {{selectTemp[18]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[18],18)"
+               *ngIf="seatDetails$[18].seatStatus === false && seatDetails$[18].seatTypeId === 2">
+            {{seatDetails$[18].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[18].seatStatus === true">
+            {{seatDetails$[18].seatName}}</div>
+
+          <div class="seat {{selectTemp[19]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[19],19)"
+               *ngIf="seatDetails$[19].seatStatus === false && seatDetails$[19].seatTypeId === 1">
+            {{seatDetails$[19].seatName}}</div>
+          <div class="seat vip {{selectTemp[19]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[19],19)"
+               *ngIf="seatDetails$[19].seatStatus === false && seatDetails$[19].seatTypeId === 2">
+            {{seatDetails$[19].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[19].seatStatus === true">
+            {{seatDetails$[19].seatName}}</div>
+
+          <div class="seat {{selectTemp[20]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[20],20)"
+               *ngIf="seatDetails$[20].seatStatus === false && seatDetails$[20].seatTypeId === 1">
+            {{seatDetails$[20].seatName}}</div>
+          <div class="seat vip {{selectTemp[20]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[20],20)"
+               *ngIf="seatDetails$[20].seatStatus === false && seatDetails$[20].seatTypeId === 2">
+            {{seatDetails$[20].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[20].seatStatus === true">
+            {{seatDetails$[20].seatName}}</div>
+
+          <div class="seat {{selectTemp[21]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[21],21)"
+               *ngIf="seatDetails$[21].seatStatus === false && seatDetails$[21].seatTypeId === 1">
+            {{seatDetails$[21].seatName}}</div>
+          <div class="seat vip {{selectTemp[21]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[21],21)"
+               *ngIf="seatDetails$[21].seatStatus === false && seatDetails$[21].seatTypeId === 2">
+            {{seatDetails$[21].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[21].seatStatus === true">
+            {{seatDetails$[21].seatName}}</div>
+
+          <div class="seat {{selectTemp[22]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[22],22)"
+               *ngIf="seatDetails$[22].seatStatus === false && seatDetails$[22].seatTypeId === 1">
+            {{seatDetails$[22].seatName}}</div>
+          <div class="seat vip {{selectTemp[22]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[22],22)"
+               *ngIf="seatDetails$[22].seatStatus === false && seatDetails$[22].seatTypeId === 2">
+            {{seatDetails$[22].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[22].seatStatus === true">
+            {{seatDetails$[22].seatName}}</div>
+
+          <div class="seat {{selectTemp[23]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[23],23)"
+               *ngIf="seatDetails$[23].seatStatus === false && seatDetails$[23].seatTypeId === 1">
+            {{seatDetails$[23].seatName}}</div>
+          <div class="seat vip {{selectTemp[23]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[23],23)"
+               *ngIf="seatDetails$[23].seatStatus === false && seatDetails$[23].seatTypeId === 2">
+            {{seatDetails$[23].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[23].seatStatus === true">
+            {{seatDetails$[23].seatName}}</div>
+        </div>
+
+        <div class="row">
+          <div class="seat {{selectTemp[24]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[24],24)"
+               *ngIf="seatDetails$[24].seatStatus === false && seatDetails$[24].seatTypeId === 1">
+            {{seatDetails$[24].seatName}}</div>
+          <div class="seat vip {{selectTemp[24]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[24],24)"
+               *ngIf="seatDetails$[24].seatStatus === false && seatDetails$[24].seatTypeId === 2">
+            {{seatDetails$[24].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[24].seatStatus === true">
+            {{seatDetails$[24].seatName}}</div>
+
+          <div class="seat {{selectTemp[25]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[25],25)"
+               *ngIf="seatDetails$[25].seatStatus === false && seatDetails$[25].seatTypeId === 1">
+            {{seatDetails$[25].seatName}}</div>
+          <div class="seat vip {{selectTemp[25]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[25],25)"
+               *ngIf="seatDetails$[25].seatStatus === false && seatDetails$[25].seatTypeId === 2">
+            {{seatDetails$[25].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[25].seatStatus === true">
+            {{seatDetails$[25].seatName}}</div>
+
+          <div class="seat {{selectTemp[26]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[26],26)"
+               *ngIf="seatDetails$[26].seatStatus === false && seatDetails$[26].seatTypeId === 1">
+            {{seatDetails$[26].seatName}}</div>
+          <div class="seat vip {{selectTemp[26]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[26],26)"
+               *ngIf="seatDetails$[26].seatStatus === false && seatDetails$[26].seatTypeId === 2">
+            {{seatDetails$[26].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[26].seatStatus === true">
+            {{seatDetails$[26].seatName}}</div>
+
+          <div class="seat {{selectTemp[27]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[27],27)"
+               *ngIf="seatDetails$[27].seatStatus === false && seatDetails$[27].seatTypeId === 1">
+            {{seatDetails$[27].seatName}}</div>
+          <div class="seat vip {{selectTemp[27]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[27],27)"
+               *ngIf="seatDetails$[27].seatStatus === false && seatDetails$[27].seatTypeId === 2">
+            {{seatDetails$[27].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[27].seatStatus === true">
+            {{seatDetails$[27].seatName}}</div>
+
+          <div class="seat {{selectTemp[28]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[28],28)"
+               *ngIf="seatDetails$[28].seatStatus === false && seatDetails$[28].seatTypeId === 1">
+            {{seatDetails$[28].seatName}}</div>
+          <div class="seat vip {{selectTemp[28]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[28],28)"
+               *ngIf="seatDetails$[28].seatStatus === false && seatDetails$[28].seatTypeId === 2">
+            {{seatDetails$[28].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[28].seatStatus === true">
+            {{seatDetails$[28].seatName}}</div>
+
+          <div class="seat {{selectTemp[29]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[29],29)"
+               *ngIf="seatDetails$[29].seatStatus === false && seatDetails$[29].seatTypeId === 1">
+            {{seatDetails$[29].seatName}}</div>
+          <div class="seat vip {{selectTemp[29]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[29],29)"
+               *ngIf="seatDetails$[29].seatStatus === false && seatDetails$[29].seatTypeId === 2">
+            {{seatDetails$[29].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[29].seatStatus === true">
+            {{seatDetails$[29].seatName}}</div>
+
+          <div class="seat {{selectTemp[30]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[30],30)"
+               *ngIf="seatDetails$[30].seatStatus === false && seatDetails$[30].seatTypeId === 1">
+            {{seatDetails$[30].seatName}}</div>
+          <div class="seat vip {{selectTemp[30]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[30],30)"
+               *ngIf="seatDetails$[30].seatStatus === false && seatDetails$[30].seatTypeId === 2">
+            {{seatDetails$[30].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[30].seatStatus === true">
+            {{seatDetails$[30].seatName}}</div>
+
+          <div class="seat {{selectTemp[31]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[31],31)"
+               *ngIf="seatDetails$[31].seatStatus === false && seatDetails$[31].seatTypeId === 1">
+            {{seatDetails$[31].seatName}}</div>
+          <div class="seat vip {{selectTemp[31]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[31],31)"
+               *ngIf="seatDetails$[31].seatStatus === false && seatDetails$[31].seatTypeId === 2">
+            {{seatDetails$[31].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[31].seatStatus === true">
+            {{seatDetails$[31].seatName}}</div>
+        </div>
+
+        <div class="row">
+          <div class="seat {{selectTemp[32]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[32],32)"
+               *ngIf="seatDetails$[32].seatStatus === false && seatDetails$[32].seatTypeId === 1">
+            {{seatDetails$[32].seatName}}</div>
+          <div class="seat vip {{selectTemp[32]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[32],32)"
+               *ngIf="seatDetails$[32].seatStatus === false && seatDetails$[32].seatTypeId === 2">
+            {{seatDetails$[32].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[32].seatStatus === true">
+            {{seatDetails$[32].seatName}}</div>
+
+          <div class="seat {{selectTemp[33]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[33],33)"
+               *ngIf="seatDetails$[33].seatStatus === false && seatDetails$[33].seatTypeId === 1">
+            {{seatDetails$[33].seatName}}</div>
+          <div class="seat vip {{selectTemp[33]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[33],33)"
+               *ngIf="seatDetails$[33].seatStatus === false && seatDetails$[33].seatTypeId === 2">
+            {{seatDetails$[33].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[33].seatStatus === true">
+            {{seatDetails$[33].seatName}}</div>
+
+          <div class="seat {{selectTemp[34]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[34],34)"
+               *ngIf="seatDetails$[34].seatStatus === false && seatDetails$[34].seatTypeId === 1">
+            {{seatDetails$[34].seatName}}</div>
+          <div class="seat vip {{selectTemp[34]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[34],34)"
+               *ngIf="seatDetails$[34].seatStatus === false && seatDetails$[34].seatTypeId === 2">
+            {{seatDetails$[34].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[34].seatStatus === true">
+            {{seatDetails$[34].seatName}}</div>
+
+          <div class="seat {{selectTemp[35]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[35],35)"
+               *ngIf="seatDetails$[35].seatStatus === false && seatDetails$[35].seatTypeId === 1">
+            {{seatDetails$[35].seatName}}</div>
+          <div class="seat vip {{selectTemp[35]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[35],35)"
+               *ngIf="seatDetails$[35].seatStatus === false && seatDetails$[35].seatTypeId === 2">
+            {{seatDetails$[35].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[35].seatStatus === true">
+            {{seatDetails$[35].seatName}}</div>
+
+          <div class="seat {{selectTemp[36]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[36],36)"
+               *ngIf="seatDetails$[36].seatStatus === false && seatDetails$[36].seatTypeId === 1">
+            {{seatDetails$[36].seatName}}</div>
+          <div class="seat vip {{selectTemp[36]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[36],36)"
+               *ngIf="seatDetails$[36].seatStatus === false && seatDetails$[36].seatTypeId === 2">
+            {{seatDetails$[36].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[36].seatStatus === true">
+            {{seatDetails$[36].seatName}}</div>
+
+          <div class="seat {{selectTemp[37]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[37],37)"
+               *ngIf="seatDetails$[37].seatStatus === false && seatDetails$[37].seatTypeId === 1">
+            {{seatDetails$[37].seatName}}</div>
+          <div class="seat vip {{selectTemp[37]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[37],37)"
+               *ngIf="seatDetails$[37].seatStatus === false && seatDetails$[37].seatTypeId === 2">
+            {{seatDetails$[37].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[37].seatStatus === true">
+            {{seatDetails$[37].seatName}}</div>
+
+          <div class="seat {{selectTemp[38]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[38],38)"
+               *ngIf="seatDetails$[38].seatStatus === false && seatDetails$[38].seatTypeId === 1">
+            {{seatDetails$[38].seatName}}</div>
+          <div class="seat vip {{selectTemp[38]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[38],38)"
+               *ngIf="seatDetails$[38].seatStatus === false && seatDetails$[38].seatTypeId === 2">
+            {{seatDetails$[38].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[38].seatStatus === true">
+            {{seatDetails$[38].seatName}}</div>
+
+          <div class="seat {{selectTemp[39]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[39],39)"
+               *ngIf="seatDetails$[39].seatStatus === false && seatDetails$[39].seatTypeId === 1">
+            {{seatDetails$[39].seatName}}</div>
+          <div class="seat vip {{selectTemp[39]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[39],39)"
+               *ngIf="seatDetails$[39].seatStatus === false && seatDetails$[39].seatTypeId === 2">
+            {{seatDetails$[39].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[39].seatStatus === true">
+            {{seatDetails$[39].seatName}}</div>
+        </div>
+
+        <div class="row">
+          <div class="seat {{selectTemp[40]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[40],40)"
+               *ngIf="seatDetails$[40].seatStatus === false && seatDetails$[40].seatTypeId === 1">
+            {{seatDetails$[40].seatName}}</div>
+          <div class="seat vip {{selectTemp[40]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[40],40)"
+               *ngIf="seatDetails$[40].seatStatus === false && seatDetails$[40].seatTypeId === 2">
+            {{seatDetails$[40].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[40].seatStatus === true">
+            {{seatDetails$[40].seatName}}</div>
+
+          <div class="seat {{selectTemp[41]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[41],41)"
+               *ngIf="seatDetails$[41].seatStatus === false && seatDetails$[41].seatTypeId === 1">
+            {{seatDetails$[41].seatName}}</div>
+          <div class="seat vip {{selectTemp[41]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[41],41)"
+               *ngIf="seatDetails$[41].seatStatus === false && seatDetails$[41].seatTypeId === 2">
+            {{seatDetails$[41].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[41].seatStatus === true">
+            {{seatDetails$[41].seatName}}</div>
+
+          <div class="seat {{selectTemp[42]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[42],42)"
+               *ngIf="seatDetails$[42].seatStatus === false && seatDetails$[42].seatTypeId === 1">
+            {{seatDetails$[42].seatName}}</div>
+          <div class="seat vip {{selectTemp[42]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[42],42)"
+               *ngIf="seatDetails$[42].seatStatus === false && seatDetails$[42].seatTypeId === 2">
+            {{seatDetails$[42].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[42].seatStatus === true">
+            {{seatDetails$[42].seatName}}</div>
+
+          <div class="seat {{selectTemp[43]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[43],43)"
+               *ngIf="seatDetails$[43].seatStatus === false && seatDetails$[43].seatTypeId === 1">
+            {{seatDetails$[43].seatName}}</div>
+          <div class="seat vip {{selectTemp[43]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[43],43)"
+               *ngIf="seatDetails$[43].seatStatus === false && seatDetails$[43].seatTypeId === 2">
+            {{seatDetails$[43].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[43].seatStatus === true">
+            {{seatDetails$[43].seatName}}</div>
+
+          <div class="seat {{selectTemp[44]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[44],44)"
+               *ngIf="seatDetails$[44].seatStatus === false && seatDetails$[44].seatTypeId === 1">
+            {{seatDetails$[44].seatName}}</div>
+          <div class="seat vip {{selectTemp[44]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[44],44)"
+               *ngIf="seatDetails$[44].seatStatus === false && seatDetails$[44].seatTypeId === 2">
+            {{seatDetails$[44].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[44].seatStatus === true">
+            {{seatDetails$[44].seatName}}</div>
+
+          <div class="seat {{selectTemp[45]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[45],45)"
+               *ngIf="seatDetails$[45].seatStatus === false && seatDetails$[45].seatTypeId === 1">
+            {{seatDetails$[45].seatName}}</div>
+          <div class="seat vip {{selectTemp[45]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[45],45)"
+               *ngIf="seatDetails$[45].seatStatus === false && seatDetails$[45].seatTypeId === 2">
+            {{seatDetails$[45].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[45].seatStatus === true">
+            {{seatDetails$[45].seatName}}</div>
+
+          <div class="seat {{selectTemp[46]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[46],46)"
+               *ngIf="seatDetails$[46].seatStatus === false && seatDetails$[46].seatTypeId === 1">
+            {{seatDetails$[46].seatName}}</div>
+          <div class="seat vip {{selectTemp[46]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[46],46)"
+               *ngIf="seatDetails$[46].seatStatus === false && seatDetails$[46].seatTypeId === 2">
+            {{seatDetails$[46].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[46].seatStatus === true">
+            {{seatDetails$[46].seatName}}</div>
+
+          <div class="seat {{selectTemp[47]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[47],47)"
+               *ngIf="seatDetails$[47].seatStatus === false && seatDetails$[47].seatTypeId === 1">
+            {{seatDetails$[47].seatName}}</div>
+          <div class="seat vip {{selectTemp[47]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[47],47)"
+               *ngIf="seatDetails$[47].seatStatus === false && seatDetails$[47].seatTypeId === 2">
+            {{seatDetails$[47].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[47].seatStatus === true">
+            {{seatDetails$[47].seatName}}</div>
+        </div>
+
+        <div class="row">
+          <div class="seat {{selectTemp[48]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[48],48)"
+               *ngIf="seatDetails$[48].seatStatus === false && seatDetails$[48].seatTypeId === 1">
+            {{seatDetails$[48].seatName}}</div>
+          <div class="seat vip {{selectTemp[48]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[48],48)"
+               *ngIf="seatDetails$[48].seatStatus === false && seatDetails$[48].seatTypeId === 2">
+            {{seatDetails$[48].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[48].seatStatus === true">
+            {{seatDetails$[48].seatName}}</div>
+
+          <div class="seat {{selectTemp[49]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[49],49)"
+               *ngIf="seatDetails$[49].seatStatus === false && seatDetails$[49].seatTypeId === 1">
+            {{seatDetails$[49].seatName}}</div>
+          <div class="seat vip {{selectTemp[49]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[49],49)"
+               *ngIf="seatDetails$[49].seatStatus === false && seatDetails$[49].seatTypeId === 2">
+            {{seatDetails$[49].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[49].seatStatus === true">
+            {{seatDetails$[49].seatName}}</div>
+
+          <div class="seat {{selectTemp[50]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[50],50)"
+               *ngIf="seatDetails$[50].seatStatus === false && seatDetails$[50].seatTypeId === 1">
+            {{seatDetails$[50].seatName}}</div>
+          <div class="seat vip {{selectTemp[50]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[50],50)"
+               *ngIf="seatDetails$[50].seatStatus === false && seatDetails$[50].seatTypeId === 2">
+            {{seatDetails$[50].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[50].seatStatus === true">
+            {{seatDetails$[50].seatName}}</div>
+
+          <div class="seat {{selectTemp[51]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[51],51)"
+               *ngIf="seatDetails$[51].seatStatus === false && seatDetails$[51].seatTypeId === 1">
+            {{seatDetails$[51].seatName}}</div>
+          <div class="seat vip {{selectTemp[51]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[51],51)"
+               *ngIf="seatDetails$[51].seatStatus === false && seatDetails$[51].seatTypeId === 2">
+            {{seatDetails$[51].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[51].seatStatus === true">
+            {{seatDetails$[51].seatName}}</div>
+
+          <div class="seat {{selectTemp[52]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[52],52)"
+               *ngIf="seatDetails$[52].seatStatus === false && seatDetails$[52].seatTypeId === 1">
+            {{seatDetails$[52].seatName}}</div>
+          <div class="seat vip {{selectTemp[52]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[52],52)"
+               *ngIf="seatDetails$[52].seatStatus === false && seatDetails$[52].seatTypeId === 2">
+            {{seatDetails$[52].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[52].seatStatus === true">
+            {{seatDetails$[52].seatName}}</div>
+
+          <div class="seat {{selectTemp[53]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[53],53)"
+               *ngIf="seatDetails$[53].seatStatus === false && seatDetails$[53].seatTypeId === 1">
+            {{seatDetails$[53].seatName}}</div>
+          <div class="seat vip {{selectTemp[53]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[53],53)"
+               *ngIf="seatDetails$[53].seatStatus === false && seatDetails$[53].seatTypeId === 2">
+            {{seatDetails$[53].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[53].seatStatus === true">
+            {{seatDetails$[53].seatName}}</div>
+
+          <div class="seat {{selectTemp[54]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[54],54)"
+               *ngIf="seatDetails$[54].seatStatus === false && seatDetails$[54].seatTypeId === 1">
+            {{seatDetails$[54].seatName}}</div>
+          <div class="seat vip {{selectTemp[54]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[54],54)"
+               *ngIf="seatDetails$[54].seatStatus === false && seatDetails$[54].seatTypeId === 2">
+            {{seatDetails$[54].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[54].seatStatus === true">
+            {{seatDetails$[54].seatName}}</div>
+
+          <div class="seat {{selectTemp[55]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[55],55)"
+               *ngIf="seatDetails$[55].seatStatus === false && seatDetails$[55].seatTypeId === 1">
+            {{seatDetails$[55].seatName}}</div>
+          <div class="seat vip {{selectTemp[55]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[55],55)"
+               *ngIf="seatDetails$[55].seatStatus === false && seatDetails$[55].seatTypeId === 2">
+            {{seatDetails$[55].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[55].seatStatus === true">
+            {{seatDetails$[55].seatName}}</div>
+        </div>
+
+        <div class="row">
+          <div class="seat {{selectTemp[56]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[56],56)"
+               *ngIf="seatDetails$[56].seatStatus === false && seatDetails$[56].seatTypeId === 1">
+            {{seatDetails$[56].seatName}}</div>
+          <div class="seat vip {{selectTemp[56]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[56],56)"
+               *ngIf="seatDetails$[56].seatStatus === false && seatDetails$[56].seatTypeId === 2">
+            {{seatDetails$[56].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[56].seatStatus === true">
+            {{seatDetails$[56].seatName}}</div>
+
+          <div class="seat {{selectTemp[57]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[57],57)"
+               *ngIf="seatDetails$[57].seatStatus === false && seatDetails$[57].seatTypeId === 1">
+            {{seatDetails$[57].seatName}}</div>
+          <div class="seat vip {{selectTemp[57]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[57],57)"
+               *ngIf="seatDetails$[57].seatStatus === false && seatDetails$[57].seatTypeId === 2">
+            {{seatDetails$[57].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[57].seatStatus === true">
+            {{seatDetails$[57].seatName}}</div>
+
+          <div class="seat {{selectTemp[58]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[58],58)"
+               *ngIf="seatDetails$[58].seatStatus === false && seatDetails$[58].seatTypeId === 1">
+            {{seatDetails$[58].seatName}}</div>
+          <div class="seat vip {{selectTemp[58]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[58],58)"
+               *ngIf="seatDetails$[58].seatStatus === false && seatDetails$[58].seatTypeId === 2">
+            {{seatDetails$[58].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[58].seatStatus === true">
+            {{seatDetails$[58].seatName}}</div>
+
+          <div class="seat {{selectTemp[59]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[59],59)"
+               *ngIf="seatDetails$[59].seatStatus === false && seatDetails$[59].seatTypeId === 1">
+            {{seatDetails$[59].seatName}}</div>
+          <div class="seat vip {{selectTemp[59]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[59],59)"
+               *ngIf="seatDetails$[59].seatStatus === false && seatDetails$[59].seatTypeId === 2">
+            {{seatDetails$[59].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[59].seatStatus === true">
+            {{seatDetails$[59].seatName}}</div>
+
+          <div class="seat {{selectTemp[60]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[60],60)"
+               *ngIf="seatDetails$[60].seatStatus === false && seatDetails$[60].seatTypeId === 1">
+            {{seatDetails$[60].seatName}}</div>
+          <div class="seat vip {{selectTemp[60]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[60],60)"
+               *ngIf="seatDetails$[60].seatStatus === false && seatDetails$[60].seatTypeId === 2">
+            {{seatDetails$[60].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[60].seatStatus === true">
+            {{seatDetails$[60].seatName}}</div>
+
+          <div class="seat {{selectTemp[61]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[61],61)"
+               *ngIf="seatDetails$[61].seatStatus === false && seatDetails$[61].seatTypeId === 1">
+            {{seatDetails$[61].seatName}}</div>
+          <div class="seat vip {{selectTemp[61]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[61],61)"
+               *ngIf="seatDetails$[61].seatStatus === false && seatDetails$[61].seatTypeId === 2">
+            {{seatDetails$[61].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[61].seatStatus === true">
+            {{seatDetails$[61].seatName}}</div>
+
+          <div class="seat {{selectTemp[62]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[62],62)"
+               *ngIf="seatDetails$[62].seatStatus === false && seatDetails$[62].seatTypeId === 1">
+            {{seatDetails$[62].seatName}}</div>
+          <div class="seat vip {{selectTemp[62]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[62],62)"
+               *ngIf="seatDetails$[62].seatStatus === false && seatDetails$[62].seatTypeId === 2">
+            {{seatDetails$[62].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[62].seatStatus === true">
+            {{seatDetails$[62].seatName}}</div>
+
+          <div class="seat {{selectTemp[63]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[63], 63)"
+               *ngIf="seatDetails$[63].seatStatus === false && seatDetails$[63].seatTypeId === 1">
+            {{seatDetails$[63].seatName}}</div>
+          <div class="seat vip {{selectTemp[63]}} text-dark ps-1 h6" (click)="chooseSeat(seatDetails$[63], 63)"
+               *ngIf="seatDetails$[63].seatStatus === false && seatDetails$[63].seatTypeId === 2">
+            {{seatDetails$[63].seatName}}</div>
+          <div class="seat occupied text-dark ps-1 h6" *ngIf="seatDetails$[63].seatStatus === true">
+            {{seatDetails$[63].seatName}}</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="text">Bạn đã chọn <strong class="text-info">{{countSeat}}</strong> ghế
+      (Tổng tiền: <strong class="text-info">{{totalMoney | currency: "VND"}}</strong>).</p>
+  </div>
+
+  <div class="text-center">
+    <button class="button btnYellow me-2" routerLink="/booking-ticket">Quay lại</button>
+    <button class="button btnBlue" [hidden]="seatBookings === undefined || seatBookings.length === 0"
+            (click)="nextConfirm()">Tiếp tục</button>
+  </div>
+</div>

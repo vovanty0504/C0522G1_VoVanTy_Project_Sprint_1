@@ -1,0 +1,147 @@
+<body>
+<div class="row">
+  <div class="col-lg-2">
+  </div>
+  <div class="col-lg-8">
+    <div class="row mt-3">
+      <div>
+        <h3 class=" fw-bold text-light mb-4 mt-5"><span style="box-shadow: 0 8px 15px lightblue; padding: 11px">
+QUẢN LÝ TÀI KHOẢN</span></h3>
+      </div>
+      <div class="col-lg-4 col-12 col-md-6 text-center">
+        <div style="box-shadow: 0 8px 15px lightblue">
+          <div class="bg-warning">
+            <img [src]="['/assets/image/avatar2.png']" height="200"
+                 width="200" class="m-3">
+          </div>
+          <div style="background-color: #f2f2f2">
+            <h3 style="color: black">{{customerName}}</h3>
+            <p style="color: black">
+
+              <span *ngIf="customerTypeName == 4"> <b>Thành Viên</b>: Đồng</span>
+              <span *ngIf="customerTypeName == 3"> <b>Thành Viên</b>: Bạc</span>
+              <span *ngIf="customerTypeName == 2"> <b>Thành Viên</b>: Vàng</span>
+              <span *ngIf="customerTypeName == 1"> <b>Thành Viên</b>: Kim Cương</span><br>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                   class="bi bi-award-fill" viewBox="0 0 16 16">
+                <path
+                  d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
+                <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
+              </svg>
+              <span *ngIf="totalPoint"><b>Điểm tích lũy</b>: {{totalPoint | number  }} </span>
+              <span *ngIf="!totalPoint"><b>Điểm tích lũy</b>: 0 </span><br>
+              <span *ngIf="customerTypeName == 4"> <b>Điểm nâng hạng thành viên:</b>: 1500 </span>
+              <span *ngIf="customerTypeName == 3"> <b>Điểm nâng hạng thành viên:</b>: 3000 </span>
+              <span *ngIf="customerTypeName == 2"> <b>Điểm nâng hạng thành viên:</b>: 5000 </span>
+
+            </p>
+            <a>
+              <button class="button btnRed " (click)="whenLogout()">Đăng xuất</button>
+            </a>
+            <hr>
+            <a routerLink="/register/info">
+              <span class="text-dark">Thông tin tài khoản</span>
+            </a>
+            <hr>
+            <a routerLink="/ticket/history/point">
+              <span class="text-dark">Lịch sử điểm</span>
+            </a>
+            <hr>
+            <a routerLink="/ticket/history/booking/">
+              <span class="text-dark">Vé đã đặt</span>
+            </a>
+            <hr>
+            <a routerLink="/ticket/history/canceled">
+              <span class="text-dark">Vé đã hủy</span>
+            </a>
+            <hr>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8 col-12 c0l-md-6 table-responsive">
+
+        <h2 class="text-light text-center">VÉ ĐÃ ĐẶT</h2>
+        <div class="row">
+          <div class="col-lg-8"></div>
+          <div class="col-lg-4">
+
+          </div>
+        </div>
+
+        <table class="table table-striped table-hover " id="table-id">
+          <thead>
+          <tr class="bg-warning">
+            <th scope="col">STT</th>
+            <th scope="col">Tên phim</th>
+            <th scope="col">Ngày đặt</th>
+            <th scope="col">Tổng tiền(VNĐ)</th>
+            <th scope="col">Trạng thái</th>
+            <th scope="col">Hoạt động</th>
+          </tr>
+          </thead>
+          <p class=" text-danger" *ngIf="!action">Không có dữ liệu</p>
+          <tbody class="table-light" *ngIf="action">
+          <tr *ngFor="let ticket of (ticketDto$ | async)!; index as i">
+
+            <td>{{i + 1 + (page - 1) * pageSize  }}</td>
+            <td>{{ticket.movieName}}</td>
+            <td>{{ticket.bookingTime | date:"dd/MM/yyyy HH:mm"}}</td>
+            <td>{{ticket.price | currency: "VND" }}</td>
+            <td *ngIf="ticket.statusTicket == 1"><b class="text-primary">Đợi nhận Vé</b></td>
+            <td *ngIf="ticket.statusTicket == 2"><b class="text-success">Đã nhận vé</b></td>
+            <td *ngIf="ticket.statusTicket == 1">
+              <div class=" wrapCss">
+                <button class="button btnRed " (click)="confirmDelete(ticket)" id="button">Hủy vé
+                </button>
+              </div>
+            </td>
+            <td *ngIf="ticket.statusTicket == 2">Chi Tiết</td>
+          </tr>
+
+          </tbody>
+        </table>
+        <div class="row">
+          <div class="col-lg-6">
+            <div *ngIf="action">
+              <span class="fw-bold text-light"> </span>
+              <select class="form-control-sm" style="width: auto" [(ngModel)]="pageSize"
+                      (ngModelChange)="showListBookingTicket()">
+                <option [ngValue]="5">Hiển thị 5 trên dòng</option>
+                <option [ngValue]="10">Hiển thị 10 trên dòng</option>
+                <option [ngValue]="15">Hiển thị 15 trên dòng</option>
+                <option [ngValue]="20">Hiển thị 20 trên dòng</option>
+                <option [ngValue]="10000">Hiển thị tất cả</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6">
+
+            <div class="text-center ms-3">
+              <div class='pagination-container'>
+                <div class="row">
+                  <div class="d-flex justify-content-between  text-white" *ngIf="action">
+                    <ngb-pagination
+                      [collectionSize]="(total$ | async)!"
+                      [(page)]="page"
+                      [maxSize]="pageSize"
+                      [pageSize]="pageSize"
+                      (pageChange)="showListBookingTicket()">
+                      <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+                    </ngb-pagination>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2"></div>
+  <h1>.</h1>
+</div>
+</body>
+
+
+

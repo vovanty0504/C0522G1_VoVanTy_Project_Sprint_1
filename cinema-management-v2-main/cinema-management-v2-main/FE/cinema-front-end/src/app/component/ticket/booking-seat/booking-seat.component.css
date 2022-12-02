@@ -1,0 +1,177 @@
+* {
+  box-sizing: border-box;
+}
+
+.body-booking {
+  /*background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),*/
+  /*url("https://media.tourisme-cambresis.fr/84967554-105897.jpg");*/
+  /*background-size: cover;*/
+  /*position: relative;*/
+  /*opacity: 0.9;*/
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: "Times New Roman", sans-serif;
+  margin: 0;
+}
+
+.movie-container {
+  margin: 20px 0;
+}
+
+.movie-container .selects {
+  background-color: white;
+  border: 0;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-left: 10px;
+  padding: 5px 15px 5px 15px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.container {
+  perspective: 100px;
+  margin-bottom: 30px;
+}
+
+.seat {
+  background-color: #a0a0a0;
+  height: 20px;
+  width: 30px;
+  margin: 3px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  box-shadow: 0 5px 5px lightblue;
+}
+
+.seat.vip {
+  background-color: #b6b453;
+}
+
+.seat.selected {
+  background-color: #6feaf6;
+}
+
+.seat.occupied {
+  background-color: red;
+}
+
+.seat:nth-of-type(2) {
+  margin-right: 10px;
+}
+
+.seat:nth-last-of-type(2) {
+  margin-left: 10px;
+}
+
+.seat:not(.occupied):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.showcase .seat:not(.occupied):hover {
+  cursor: pointer;
+  transform: scale(1);
+}
+
+.showcase {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #777;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.showcase li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+.showcase li small {
+  margin-left: 2px;
+}
+
+.row {
+  display: flex;
+}
+
+.screen {
+  background-image: url("https://fbcoverstreet.com/thumbnail/PnKV2NWnel4YZKIbu1EuMB59mjWzVINV55NgyUfMiTvMsvoxKD6f6V8NsLsR1fRW.webp");
+  background-size: cover;
+  position: relative;
+  height: 70px;
+  width: 100%;
+  margin: 15px 0;
+  transform: rotateX(-30deg);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7)
+}
+
+p.text {
+  margin: 5px 0;
+}
+
+p.text span {
+  color: #6feaf6;
+}
+
+.wrapCss {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  width: 140px;
+  height: 45px;
+  font-family: "Times New Roman", sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.btnBlue:hover {
+  background-color: #276dfd;
+  box-shadow: 0 15px 20px blue;
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.btnYellow:hover {
+  background-color: #ffc100;
+  box-shadow: 0 15px 20px yellow;
+  color: black;
+  transform: translateY(-7px);
+}
+
+.btnRed:hover {
+  background-color: #ea4646;
+  box-shadow: 0 15px 20px red;
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.btnGreen:hover {
+  background-color: #22bd22;
+  box-shadow: 0 15px 20px green;
+  color: #fff;
+  transform: translateY(-7px);
+}

@@ -1,0 +1,96 @@
+<div class="p-5 mx-3 body-booking">
+  <h2 class="text-center fw-bold text-light"><span style="box-shadow: 0 8px 15px lightblue; padding: 5px">
+        CHỌN PHIM VÀ SUẤT CHIẾU</span></h2>
+
+  <div class="row p-5">
+    <div class="col-sm-4 mb-4">
+        <div class="swiper-slide mx-auto">
+          <div class="swiper-content">
+            <div class="hero new-york">
+              <div class="calendar">
+                <span class="month">Bước</span>
+                <span class="date">1</span>
+              </div>
+              <div class="photo-btn">
+                <div class="text">Phim</div>
+              </div>
+            </div>
+            <div class="copy">
+              <h2>CHỌN PHIM</h2>
+              <h4 class="text-danger">Các bộ phim sắp khởi chiếu.</h4>
+
+              <select class="form-select mt-3" size="5" aria-label="size 5 select example"
+                      [(ngModel)]="movieChoose" (change)="changeMovie()" [compareWith]="compareWithId">
+                <option disabled [ngValue]="">Vui lòng chọn phim..</option>
+                <option [ngValue]="item" *ngFor="let item of (movies$ | async)">{{item.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4 mb-4">
+        <div class="swiper-slide mx-auto">
+          <div class="swiper-content">
+            <div class="hero san-fran">
+              <div class="calendar">
+                <span class="month">Bước</span>
+                <span class="date">2</span>
+              </div>
+              <div class="photo-btn">
+                <div class="text">Ngày</div>
+              </div>
+            </div>
+            <div class="copy">
+              <h2>CHỌN NGÀY CHIẾU</h2>
+              <h4 class="text-danger">7 ngày chiếu tiếp theo.</h4>
+
+              <h5 class="text-primary mt-3" *ngIf="movieChoose === undefined">
+                Vui lòng chọn phim trước khi chọn ngày chiếu!</h5>
+              <select class="form-select mt-3" size="5" aria-label="size 5 select example"
+                      [(ngModel)]="showDateChoose" (change)="chanShowDate()" *ngIf="movieChoose !== undefined">
+                <option disabled [ngValue]="">Vui lòng chọn ngày chiếu phim..</option>
+                <option *ngFor="let item of (showDates$ | async)" [ngValue]="item">
+                  {{item.showDate | date: "dd/MM/yyyy"}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4 mb-4">
+        <div class="swiper-slide mx-auto">
+          <div class="swiper-content">
+            <div class="hero chicago">
+              <div class="calendar">
+                <span class="month">Bước</span>
+                <span class="date">3</span>
+              </div>
+              <div class="photo-btn">
+                <div class="text">Giờ</div>
+              </div>
+            </div>
+            <div class="copy">
+              <h2>CHỌN GIỜ CHIẾU</h2>
+              <h4 class="text-danger">Các suất chiếu trong ngày.</h4>
+
+              <h5 class="text-primary mt-3" *ngIf="showDateChoose === undefined">
+                Vui lòng chọn ngày chiếu trước khi chọn suất chiếu!</h5>
+              <select class="form-select mt-3" size="5" aria-label="size 5 select example"
+                      [(ngModel)]="showTimeChoose" *ngIf="showDateChoose !== undefined">
+                <option disabled [value]="">Vui lòng chọn lịch chiếu..</option>
+                <option *ngFor="let item of (showTimes$ | async)" [ngValue]="item">
+                  Giờ chiếu: {{item.times.slice(0, 5)}} | Phòng: {{item.room}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="text-center wrapCss">
+    <button class="button btnYellow me-2 yellowBorder" [routerLink]="''">Quay lại</button>
+    <button class="button btnBlue blueBorder" [hidden]="showTimeChoose === undefined" routerLink="/booking-seat"
+            (click)="transmissionData()">Tiếp tục</button>
+  </div>
+</div>

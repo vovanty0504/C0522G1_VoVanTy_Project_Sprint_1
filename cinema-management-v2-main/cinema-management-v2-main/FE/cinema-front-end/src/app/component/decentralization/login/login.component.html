@@ -1,0 +1,81 @@
+
+<div class="limiter" style="background-image: url('../assets/images/bgfim1.jpg'); background-size: cover">
+  <div class="container-login100" style="color: black">
+    <div class="wrap-login100 p-l-20 p-r-20 p-t-5 p-b-30">
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="p-l-10" src="assets/images/cinema.png" style="width: 200px;height: 150px">
+        </div>
+        <div class="col-lg-8 p-t-50" >   <span style="font-size: 40px;margin-left: 8%;font-family: 'Times New Roman'">
+						ĐĂNG NHẬP
+					</span>
+        </div>
+      </div>
+      <form class="login100-form validate-form"  [formGroup] = "formGroup" (ngSubmit)="onSubmit()"
+            appFocusInvalidInput #focusInput="focusInvalidInput">
+        <div class="wrap-input100 validate-input m-b-23" data-validate="Username is required">
+          <label class="label-input100">Tên đăng nhập:
+            <span class="text-danger"
+                  *ngIf="formGroup.controls.username.hasError('required')
+                  && formGroup.controls.username.dirty">
+            Vui lòng nhập tài khoản !</span></label>
+          <input class="input100" type="text" formControlName="username" >
+          <span class="focus-input100" data-symbol="&#xf206;"></span>
+        </div>
+
+
+        <div class="wrap-input100 validate-input" data-validate="Password is required">
+          <label class="label-input100">Mật khẩu:
+            <span class="text-danger"
+                  *ngIf="formGroup.controls.password.hasError('required')
+                  && formGroup.controls.password.dirty">
+            Vui lòng nhập mật khẩu !</span></label>
+          <input class="input100" type="password" formControlName="password">
+          <span class="focus-input100" data-symbol="&#xf190;"></span>
+        </div>
+
+        <div class="p-b-10 p-t-10 the-a" style="font-size: 18px">
+          <label>
+            <input style="background: rebeccapurple" type="checkbox" formControlName="rememberMe" checked="checked"> Lưu mật
+            khẩu
+          </label>
+          <a  style="text-decoration: none;color: royalblue"  routerLink="/forgot-password" class="the-a">
+            <span style="margin-left: 45%;font-size: 18px" >Quên mật khẩu ?</span>
+          </a>
+        </div>
+
+        <div class="p-b-30" style="font-family: Times New Roman;font-size: 18px">
+          <span style="font-family: Times New Roman;font-size: 18px;color: #666666">Bạn chưa có tài khoản ?</span>
+          <a style="text-decoration: none;margin-left: 4%"  href="#" >
+            <span class="the-a" style="font-family: Times New Roman;font-size: 18px;">Đăng ký ?</span>
+          </a>
+        </div>
+
+        <button class="gmail-btn"
+                style="text-transform:none;border-radius: 30px" >
+          <span style="font-size: 20px;font-family: Times New Roman">Đăng nhập </span>
+        </button>
+
+      </form>
+      <div class="txt1 text-center">
+						<span>
+							Hoặc
+						</span>
+      </div>
+
+      <a (click)="signInWithGoogle()">
+        <button class="gmail-btn"
+                style="text-transform:none;border-radius: 30px; margin-bottom: 5%" type="button">
+          <img  width="20px" alt="Google sign-in"
+                src="https://cdn-icons-png.flaticon.com/512/2504/2504739.png"/>
+          <span style="font-size: 20px;margin-left: 2%"  >Đăng nhập Gmail</span>
+        </button>
+      </a>
+
+      <button class="thoat-btn" (click)="whenExit()"
+              style="text-transform:none;border-radius: 30px" >
+        <span style="font-size: 20px">Thoát</span>
+      </button>
+    </div>
+  </div>
+</div>

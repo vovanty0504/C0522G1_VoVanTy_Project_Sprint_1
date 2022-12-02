@@ -1,0 +1,156 @@
+<div class="row header1">
+  <div class="col-lg-3 col-md-6 col-12">
+    <div class="mt-3 mx-2">
+      <a routerLink="" class="logo">
+        <img src="/assets/image/cinema.png" style="height: 150px;width: 200px" alt="">
+      </a>
+    </div>
+  </div>
+  <div class="col-lg-5 col-md-9 col-12 d-flex mt-5" style=" background: #343a40;height: 50px;border-radius: 10px">
+  <span class="mt-3">
+  <a href="#" class="generic text-light mx-5" style="text-decoration: none" target="_blank" title="Twitter"
+     itemprop="significantLink">
+    <i class="fa-solid fa-envelope" style="color: orange"></i>   C0522G1@gmail.com
+  </a>
+    <a href="#" style="text-decoration: none" class="generic text-light mx-3" target="_blank" title="Twitter"
+       itemprop="significantLink">
+    <i class="fa-solid fa-phone-volume" style="color: orange"></i>   0389922342
+  </a>
+    <a href="#" class="generic text-light ps-3" target="_blank" title="Facebook"
+       itemprop="significantLink">
+               <i class="fa-brands fa-facebook" style="color: blue"></i>
+      </a>
+     <a href="#" class="generic text-light mx-1" target="_blank" title="Facebook"
+        itemprop="significantLink">
+               <i class="fa-brands fa-twitter" style="color: #1da1f2"></i>
+      </a>
+     <a href="#" class="generic text-light mx-1" target="_blank" title="Facebook"
+        itemprop="significantLink">
+               <i class="fa-brands fa-instagram" style="color: chocolate"></i>
+      </a>
+    <a href="#" class="generic text-light mx-1" target="_blank" title="Facebook"
+       itemprop="significantLink">
+               <i class="fa-brands fa-internet-explorer" style="color: #0a53be"></i>
+      </a>
+    <a href="#" class="generic text-light mx-1" target="_blank" title="Facebook"
+       itemprop="significantLink">
+               <i class="fa-brands fa-youtube" style="color: red"></i>
+      </a>
+    </span>
+  </div>
+  <div class="col-lg-4 col-md-8 col-12 d-flex mt-5 ps-5">
+    <div class="mt-3">
+      <a class="login" routerLink="/login" *ngIf="username==''">
+        <button class="btn button btnBlue signin">
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor"
+               class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                  d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
+            <path fill-rule="evenodd"
+                  d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+          </svg>
+          Đăng nhập
+        </button>
+      </a>
+      <a routerLink="/register/info" *ngIf="username" style="text-decoration: none; color: orange;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+             class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+          <path
+            d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        </svg>
+        <span class="ps-2">{{username}}</span></a>
+    </div>
+    <div class="ps-4 mt-3">
+      <a class="logout" (click)="whenLogout()" *ngIf="username!=''">
+        <button class="btn button btnRed redBorder signout">Đăng xuất
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor"
+               class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                  d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+            <path fill-rule="evenodd"
+                  d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+          </svg>
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="row sticky-lg-top">
+  <nav class="navbar navbar-expand-lg nav-header">
+    <div>
+      <button class="navbar-toggler" style="background: white" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-nav-scroll">
+          <li class="nav-item ms-4">
+            <a class="nav-link colorA" (click)="transmissionData()" routerLink="/ticket/booking-ticket"><i
+              class="fa fa-ticket"></i> Đặt vé</a>
+          </li>
+          <li class="nav-item dropdown mx-2">
+            <a class="nav-link dropdown-toggle colorA" href="#" role="button" data-bs-toggle="dropdown"
+               aria-expanded="false">
+              <i class="fa-solid fa-film"></i> Phim
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" routerLink="/moviePlay">Phim đang chiếu</a></li>
+              <li><a class="dropdown-item" routerLink="/moviePremiere">Phim sắp chiếu</a></li>
+            </ul>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link colorA" routerLink="/promotionDetail"><i class="fa-solid fa-percent"></i>
+              Khuyến mãi</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link colorA" routerLink="/register/signup"><i class="fa-solid fa-user-plus"></i> Đăng ký</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link colorA" *ngIf="isEmployee" routerLink="/promotion/list"><i
+              class="fa-solid fa-list-check"></i>
+              Quản lý khuyến mãi</a>
+          </li>
+
+
+          <li class="nav-item mx-2">
+            <a class="nav-link colorA" *ngIf="isAdmin" routerLink="/employee/list"><i class="fa fa-user"></i> Nhân
+              viên</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link colorA" *ngIf="isAdmin" routerLink="/listRoom"><i class="fa-solid fa-bars-progress"></i>
+              Quản lý phòng</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link colorA" *ngIf="isEmployee" routerLink="/customer/list"><i
+              class="fa fa-user-secret"></i> Thành viên</a>
+          </li>
+
+
+          <li class="nav-item mx-2">
+            <a class="nav-link colorA" routerLink="/movie/list" *ngIf="isEmployee"><i class="fa-solid fa-film"></i>
+              Quản lý phim</a>
+          </li>
+
+          <li class="nav-item dropdown mx-2">
+            <a class="nav-link dropdown-toggle colorA" *ngIf="isAdmin" href="#" role="button"
+               data-bs-toggle="dropdown"
+               aria-expanded="false">
+              <i class="fa fa-chart-simple"></i> Thống kê
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" routerLink="/statement/movie">Thống kê phim</a></li>
+              <li><a class="dropdown-item" routerLink="/statement/customer">Thống kê thành viên</a></li>
+            </ul>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link colorA" *ngIf="isEmployee" routerLink="/ticket/list-management"><i
+              class="fa fa-user-secret"></i> Vé</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

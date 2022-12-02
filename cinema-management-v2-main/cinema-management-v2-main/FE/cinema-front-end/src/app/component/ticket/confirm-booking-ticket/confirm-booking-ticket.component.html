@@ -1,0 +1,111 @@
+<div *ngIf="arrayTicket$ != undefined && arrayTicket$ != null; else noContent" class="bodyc">
+  <div class="container-fluid d-flex" style="color: white" *ngIf="infoCustomer$|async">
+    <div class="container">
+      <div class="row">
+        <div class="dashboard-wrapper">
+          <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10 dashboard-content user-profile">
+              <div class="panel panel-default">
+                <div class="panel-heading"><h4>THÔNG TIN ĐẶT VÉ</h4></div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-sm-5 col-md-4 user-img">
+                      <img style="width: 100%; height: 380px"
+                           src="{{infoCustomer$.value.image}}"
+                           class="img-responsive" alt="user-img"/>
+                    </div><!-- end columns -->
+                    <div class="col-sm-7 col-md-8  user-detail">
+                      <ul class="list-unstyled">
+                        <li><h4>{{infoCustomer$.value.nameMovie}}</h4></li>
+                        <hr>
+                        <li><b style="color: orange">Phòng chiếu: </b> {{infoCustomer$.value.nameRoom}}</li>
+                        <br>
+                        <li><b style="color: orange">Ngày
+                          chiếu: </b> {{infoCustomer$.value.dateProjection | date: "dd/MM/yyyy"}}</li>
+                        <br>
+                        <li><b style="color: orange">Giờ chiếu: </b> {{infoCustomer$.value.startTime}}</li>
+                        <br>
+                        <li>
+                          <table>
+                            <tr>
+                              <td>
+                                <b style="color: orange">Ghế: </b>
+                              </td>
+                              <td *ngFor="let item of arrayTicket$|async" class="pe-1">
+                                {{item.nameSeat}}
+                              </td>
+                            </tr>
+                          </table>
+                        </li>
+                        <br>
+                        <li>
+                          <table>
+                            <tr>
+                              <td>
+                                <b style="color: orange">Giá: </b>
+                              </td>
+                              <td>
+
+                              </td>
+                            </tr>
+                            <tr *ngFor="let item of arrayTicket$|async;" style="transform: translateY(-22px)">
+                              <td></td>
+                              <td>&nbsp;{{item.nameSeat}}: {{item.price|number}} VND</td>
+                            </tr>
+                          </table>
+                        </li>
+                        <li><b style="color: orange">Tổng cộng: </b> {{total$|number}} VND
+                        </li>
+                        <br>
+                      </ul>
+
+                    </div><!-- end columns -->
+
+                  </div><!-- end row -->
+                  <div class="row">
+                    <div class="col-sm-5 col-md-4 user-img">
+                      <!---->
+                    </div><!-- end columns -->
+
+                    <div class="col-sm-7 col-md-8  user-detail">
+                      <ul class="list-unstyled">
+                        <li><h4 id="accountBooking">Kiểm tra thông tin đặt vé</h4></li>
+                        <hr>
+                        <li><b style="color: orange">Họ tên: </b> {{infoCustomer$.value.nameCustomer}}</li>
+                        <br>
+                        <li><b style="color: orange">Email: </b> {{infoCustomer$.value.email}}</li>
+                        <br>
+                        <li><b style="color: orange">CMND: </b> {{infoCustomer$.value.idCard}}</li>
+                        <br>
+                        <li><b style="color: orange">Số điện thoại: </b> {{infoCustomer$.value.phoneNumber}}</li>
+                        <br>
+                        <li id="note" style="transform: translateX(-10px); font-size: 17px"></li>
+                      </ul>
+                      <br>
+
+                      <button class="button btnGreen" id="confirm" style="border: 2px solid #22bd22"
+                              [routerLink]="['/payment-ticket']">Xác nhận
+                        đặt vé
+                      </button>
+
+                    </div><!-- end columns -->
+                  </div><!-- end row -->
+
+
+                </div><!-- end panel-body -->
+              </div><!-- end panel-detault -->
+            </div><!-- end columns -->
+          </div><!-- end row -->
+        </div><!-- end dashboard-wrapper -->
+      </div><!-- end columns -->
+    </div><!-- end row -->
+  </div><!-- end container -->
+</div>
+<ng-template #noContent>
+  <br> <br>
+  <h5 style="text-align: center">Dữ liệu đang tải, vui lòng tải lại trang...</h5>
+  <div style="text-align: center">
+    <button class="button btnGreen" style="width: 70px; height: 20px">Tải lại</button>
+  </div>
+  <br> <br>
+</ng-template>

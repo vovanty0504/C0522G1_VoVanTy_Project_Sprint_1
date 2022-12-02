@@ -1,0 +1,198 @@
+<div class="container container-lg container-md container-sm container-xl">
+
+  <!--  Body-->
+  <div class="row" id="bodyTicket">
+    <div class="col-lg-12 col-md-12 col-sm-12 pt-2">
+      <h2 class="text-light text-center">DANH SÁCH ĐẶT VÉ</h2>
+      <div class="row m-0">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6"></div>
+        <div class="col-lg-3"></div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-2 p-1 ms-0">
+            <!--            <button class="button btnGreen" style="height: 39px">-->
+            <!--              Thêm mới-->
+            <!--            </button>-->
+          </div>
+          <div class="col-lg-4"></div>
+          <div class="col-lg-6 ms-0 p-1">
+            <div class="d-flex my-1">
+              <!--              <input class="form-control me-2" type="text" placeholder="Tìm theo mã đặt vé..."-->
+              <!--                     aria-label="Search" [(ngModel)]="ticketIdSearch">-->
+              <!--              <input class="form-control me-2" type="text" placeholder="Tìm theo mã thành viên..."-->
+              <!--                     aria-label="Search" [(ngModel)]="customerIdSearch">-->
+              <input class="form-control me-2" type="text" placeholder="Tìm theo CMND..."
+                     aria-label="Search" [(ngModel)]="idCardSearch" maxlength="20">
+              <input class="form-control me-2" type="text" placeholder="Tìm theo số điện thoại..."
+                     aria-label="Search" [(ngModel)]="phoneNumberSearch" maxlength="20">
+              <button class="btn btn-light  me-2" (click)="resetSearchInput()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                </svg>
+              </button>
+              <button class="button btnGreen greenBorder" style="height: 38px; width: 30%" type="submit"
+                      (click)="paginate()">
+                Tìm
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row table-responsive-sm table-responsive-lg table-responsive-xxl">
+          <!--          <h3 class="text-white text-xl-center">-->
+          <!--            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-hourglass-split" viewBox="0 0 16 16">-->
+          <!--              <path d="M2.5 15a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11zm2-13v1c0 .537.12 1.045.337 1.5h6.326c.216-.455.337-.963.337-1.5V2h-7zm3 6.35c0 .701-.478 1.236-1.011 1.492A3.5 3.5 0 0 0 4.5 13s.866-1.299 3-1.48V8.35zm1 0v3.17c2.134.181 3 1.48 3 1.48a3.5 3.5 0 0 0-1.989-3.158C8.978 9.586 8.5 9.052 8.5 8.351z"/>-->
+          <!--            </svg>-->
+          <!--            Không tìm thấy dữ liệu</h3>-->
+          <button class="btn btn-warning" type="button" disabled *ngIf="!action" style="font-size: 18px">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>
+            Không tìm thấy dữ liệu...
+          </button>
+          <table class="table table-sm " id="no-more-table" style="text-align: center;width: 100%" *ngIf="action">
+            <thead class="bg bg-warning">
+            <tr>
+              <th style="width: 2%"><b>STT</b></th>
+              <th style="width: 5%">Mã vé</th>
+<!--              <th style="width: 15%">Mã thành viên</th>-->
+              <th style="width: 15%">Họ tên</th>
+              <th style="width: 8%">CMND</th>
+              <th style="width: 8%">Số điện thoại</th>
+              <th style="width: 15%">Phim</th>
+              <th style="width: 14%">Suất chiếu</th>
+              <th style="width: 12%">Phòng</th>
+              <th style="width: 15%">Trạng thái</th>
+              <th style="width: 4%">Chọn</th>
+              <th style="width: 4%">Hủy</th>
+            </tr>
+            </thead>
+            <tbody class="text-black  bg-light">
+            <tr *ngFor="let item of (ticketListDto$ | async); index as i">
+              <td data-tittle="Stt" >{{i + 1 + (page - 1) * pageSize}}</td>
+              <td data-tittle="Mã vé" >{{item.ticketId}}</td>
+<!--              <td data-tittle="Mã thành viên" style="width: 10%">{{item.customerId}}</td>-->
+              <td data-tittle="Họ tên" style="text-align: left">{{item.customerName }}</td>
+              <td data-tittle="Cmnd" >{{item.idCard}}</td>
+              <td data-tittle="Số điện thoại">{{item.phoneNumber}}</td>
+              <td data-tittle="Phim" >{{item.movieName }}</td>
+              <td data-tittle="Suất chiếu" >{{item.dateProjection | date: "dd/MM/yyyy"}}, {{item.startTime}}</td>
+              <td data-tittle="Phòng">{{item.roomName}}, {{item.seatName}}</td>
+              <td data-tittle="Trạng thái" *ngIf="item.statusTicket == 1" style="color: green">Chờ...</td>
+              <td data-tittle="Trạng thái" *ngIf="item.statusTicket == 2" style="color: red"><b>Đã nhận</b></td>
+              <td>
+                <div class="text-center wrapCss">
+                  <button *ngIf="item.statusTicket == 1" class="button btnYellow yellowBorder" style="height: 30px;width: 80px" data-bs-toggle="modal"
+                          data-bs-target="#ticketDetail"
+                          (click)="getInfoTicketDto(item.ticketId, item.customerId,
+                          item.movieName, item.dateProjection, item.startTime,
+                          item.roomName, item.seatName)"
+                          (click)="getTicketIdToUpdate(item.ticketId, item.statusTicket)">Nhận vé
+                  </button>
+                </div>
+              </td>
+              <td>
+                <div class="text-center wrapCss">
+                  <button *ngIf="item.statusTicket == 1" class="button btnRed redBorder" (click)="modalDelete()" style="height: 30px;width: 80px">
+                    Hủy vé
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+        <!--        Modal View ticketDetail-->
+        <div class="modal fade" id="ticketDetail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5 text-black" id="exampleModalLabel">Bạn có muốn in vé ?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <!--                Ticket -->
+                <div id="content" #content style="margin-left: 10%">
+                  <h4 class="text-center p-2">C0522G1-Cinema-Ticket</h4>
+                  <h6 class="text-center">-------*****-------</h6>
+                  <h6>LIEN 2: Khach hang</h6>
+                  <div class="row">
+                    <div class="col-6">
+                      <h6>MS: 01/VE2/001</h6>
+                    </div>
+                    <div class="col-6">
+                      <h6>KH: CP/19T</h6>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <h6>SO: 009439</h6>
+                    </div>
+                    <div class="col-6">
+                      <h6>MST: 0799752479-H</h6>
+                    </div>
+                  </div>
+                  <h6 class="text-center">CONG TY TM&DV C0522G1 - DA NANG</h6>
+                  <h5 class="text-center">-------------------------------------------------</h5>
+                  <h5 class="text-center">C0522G1 Cinema Da Nang</h5>
+                  <h5 class="text-center">-------------------------------------------------</h5>
+                  <h5>Ticket: {{ticketId}} - Cus: {{customerId}} - {{nowDay | date:"dd/MM/yyyy hh:mm a"}}</h5>
+                  <h1>{{movieName}}</h1>
+                  <div class="row">
+                    <div class="col-6">
+                      <h5>Ngay: {{dateProjection| date: "dd/MM/yyyy"}}</h5>
+                    </div>
+                    <div class="col-6">
+                      <h5>Gio: {{startTime}}</h5>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <h5>Ghe: {{roomName}}</h5>
+                    </div>
+                    <div class="col-6">
+                      <h5>Rạp: {{seatName}}</h5>
+                    </div>
+                  </div>
+                  <h6 class="text-center">-------*****-------</h6>
+                  <!--                  <h5>Ngày: {{dateProjection| date: "dd/MM/yyyy"}} - Giờ: {{startTime}}</h5>-->
+                  <!--                  <h5>Ghế: {{roomName}} - Rạp: {{seatName}}</h5>-->
+                  <!--                  <h6 class="text-center">-&#45;&#45;&#45;&#45;&#45;&#45;*****-&#45;&#45;&#45;&#45;&#45;&#45;</h6>-->
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="button btnYellow" data-bs-dismiss="modal" (click)="exportPdf()">Xuất PDF
+                </button>
+                <button type="button" class="button btnRed" data-bs-dismiss="modal">Hủy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="d-flex justify-content-between ms-0 p-1 ps-0" *ngIf="action">
+          <select class="form-select" style="width: 13%; height: 35px ; margin-left: -12px" [(ngModel)]="pageSize"
+                  (ngModelChange)="paginate()">
+            <option [ngValue]="5"> Hiển thị 5 dòng</option>
+            <option [ngValue]="10">Hiển thị 10 dòng</option>
+            <option [ngValue]="20">Hiển thị 20 dòng</option>
+            <option [ngValue]="totalElement">Hiển thị tất cả</option>
+          </select>
+          <nav aria-label="Page navigation example">
+            <ngb-pagination
+              *ngIf="page != totalElement"
+              [collectionSize]="(total$ | async)!"
+              [(page)]="page"
+              [pageSize]="pageSize"
+              [maxSize]="5"
+              (pageChange)="paginate()"
+              [boundaryLinks]="true">
+              <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
+            </ngb-pagination>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

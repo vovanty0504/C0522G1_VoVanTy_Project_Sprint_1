@@ -1,0 +1,217 @@
+<div class="text-center  mt-3" id="head"><h2
+  class="m-0 text-light pt-2">THÊM MỚI NHÂN VIÊN</h2></div>
+<form [formGroup]="employeeFormGroup" (ngSubmit)="submit()" *ngIf="employeeFormGroup">
+  <div class="container">
+    <div class="row">
+      <label for="account"><b>Tài khoản</b><span>*</span> </label>
+      <span *ngIf="employeeFormGroup.controls.username.hasError('required') &&
+                      (employeeFormGroup.controls.username.touched  || submitCheck)" class="mx-1">
+        Vui lòng nhập tài khoản!</span>
+
+      <span *ngIf="employeeFormGroup.controls.username.hasError('minlength') &&
+                           (employeeFormGroup.controls.username.dirty  || submitCheck)" class="mx-1">
+              Tài khoản tối thiểu 6 kí tự</span>
+
+      <span *ngIf="employeeFormGroup.controls.username.hasError('maxlength') &&
+                           ( employeeFormGroup.controls.username.dirty  || submitCheck)" class="mx-1">
+              Tài khoản tối đa 32 kí tự</span>
+
+
+      <input type="text" required id="account" formControlName="username">
+    </div>
+
+    <div formGroupName="passwordGroup">
+      <div class="col-lg-12">
+        <label for="psw"><b>Mật khẩu</b><span>*</span></label>
+        <span *ngIf="employeeFormGroup.get('passwordGroup').hasError('required','password') &&
+                      (employeeFormGroup.get('passwordGroup').get('password').touched  || submitCheck)" class="mx-1">
+          Vui lòng nhập mật khẩu!</span>
+
+        <span *ngIf="employeeFormGroup.get('passwordGroup').hasError('minlength','password') &&
+                             ( employeeFormGroup.get('passwordGroup').get('password').dirty  || submitCheck)"
+              class="mx-1">
+          Mật khẩu tối thiểu 6 kí tự</span>
+
+        <span *ngIf="employeeFormGroup.get('passwordGroup').hasError('maxlength','password') &&
+                              (employeeFormGroup.get('passwordGroup').get('password').dirty  || submitCheck)"
+              class="mx-1">
+          Mật khẩu tối đa 15 kí tự</span>
+
+        <input type="password" name="psw" required id="psw" formControlName="password">
+      </div>
+
+      <div class="col-lg-12">
+        <label for="psw-repeat"><b>Nhập lại mật khẩu</b><span>*</span></label>
+        <span *ngIf="employeeFormGroup.controls.passwordGroup.hasError('notSame') &&
+                     ( employeeFormGroup.controls.passwordGroup.dirty  || submitCheck )" class="mx-1">
+            Nhập lại mật khẩu không trùng khớp!
+        </span>
+        <input type="password" name="psw" required id="psw-repeat" formControlName="passwordConfirm">
+      </div>
+
+    </div>
+
+    <div class="row">
+      <label for="name"><b>Họ tên</b><span>*</span>
+      </label>
+      <span
+        *ngIf="employeeFormGroup.controls.name.hasError('required') &&
+                     ( employeeFormGroup.controls.name.touched  || submitCheck)" class="mx-1">
+      Vui lòng nhập tên!
+      </span>
+      <span
+        *ngIf="employeeFormGroup.controls.name.hasError('pattern') &&
+                     ( employeeFormGroup.controls.name.touched  || submitCheck)" class="mx-1">
+           Tên không được chứa số!
+      </span>
+      <span
+        *ngIf="employeeFormGroup.controls.name.hasError('minlength') &&
+                     ( employeeFormGroup.controls.name.dirty  || submitCheck)" class="mx-1">
+           Tên phải nhiều hơn 4 kí tự!
+      </span>
+      <span
+        *ngIf="employeeFormGroup.controls.name.hasError('maxlength') &&
+                     ( employeeFormGroup.controls.name.dirty  || submitCheck)" class="mx-1">
+           Tên phải ít hơn 32 kí tự!
+      </span>
+      <input type="text" required id="name" formControlName="name">
+    </div>
+
+    <div class="row">
+      <label for="code"><b>Số CMND/CCCD</b><span>*</span></label>
+      <span *ngIf="employeeFormGroup.controls.idCard.hasError('required') &&
+     ( employeeFormGroup.controls.idCard.touched  || submitCheck)" class="mx-1">
+       Vui lòng nhập số CMND!</span>
+
+      <span *ngIf="employeeFormGroup.controls.idCard.hasError('pattern') &&
+                      (employeeFormGroup.controls.idCard.touched  || submitCheck)" class="mx-1">
+      CMND phải gồm 9 hoặc 12 số!</span>
+
+      <input type="text" required id="code" formControlName="idCard">
+    </div>
+
+    <div class="row">
+      <label for="email"><b>Email</b><span>*</span>
+      </label>
+
+      <span *ngIf="employeeFormGroup.controls.email.hasError('required') &&
+                      (employeeFormGroup.controls.email.touched  || submitCheck)" class="mx-1">
+      Vui lòng nhập email!</span>
+      <span *ngIf="employeeFormGroup.controls.email.hasError('email') &&
+                      (employeeFormGroup.controls.email.touched  || submitCheck)" class="mx-1">
+      Email phải đúng định dạng có đuôi là @gmail.com!</span>
+
+      <span *ngIf="employeeFormGroup.controls.email.hasError('minlength') &&
+                      (employeeFormGroup.controls.email.dirty  || submitCheck)" class="mx-1">
+      Email phải nhiều hơn 12 kí tự!</span>
+
+      <span *ngIf="employeeFormGroup.controls.email.hasError('maxlength') &&
+                      (employeeFormGroup.controls.email.dirty  || submitCheck)" class="mx-1">
+      Email phải ít hơn 32 kí tự!</span>
+      <input type="email" required id="email" formControlName="email">
+    </div>
+
+    <div class="row">
+      <label for="phoneNumber"><b>Số điện thoại</b><span>*</span>
+      </label>
+
+      <span *ngIf="employeeFormGroup.controls.phoneNumber.hasError('required') &&
+                      (employeeFormGroup.controls.phoneNumber.touched || submitCheck)" class="mx-1">
+      Vui lòng nhập số điện thoại!</span>
+      <span *ngIf="employeeFormGroup.controls.phoneNumber.hasError('pattern') &&
+                      (employeeFormGroup.controls.phoneNumber.touched || submitCheck)" class="mx-1">
+      Số điện thoại pha đúng định dạng là 09|09xxxxxxxx hoặc (84)+9xxxxxxxx!</span>
+      <input type="text" required id="phoneNumber" formControlName="phoneNumber">
+    </div>
+
+    <div class="row">
+      <label for="address"><b>Địa chỉ</b><span>*</span></label>
+      <span *ngIf="employeeFormGroup.controls.address.hasError('required') &&
+                      (employeeFormGroup.controls.address.touched || submitCheck)" class="mx-1">
+    Vui lòng nhập địa chỉ!</span>
+
+      <span *ngIf="employeeFormGroup.controls.address.hasError('minlength') &&
+                      (employeeFormGroup.controls.address.dirty || submitCheck)" class="mx-1">
+    Địa chỉ phải nhiều hơn 3 kí tự!</span>
+
+      <span *ngIf="employeeFormGroup.controls.address.hasError('maxlength') &&
+                      (employeeFormGroup.controls.address.dirty || submitCheck)" class="mx-1">
+    Địa chỉ phải ít hơn 32 kí tự!</span>
+      <input type="text" required id="address" formControlName="address">
+    </div>
+
+    <div class="row">
+      <label for="birthday"><b>Ngày sinh</b><span>*</span></label>
+
+      <span *ngIf="employeeFormGroup.controls.dayOfBirth.hasError('required') &&
+                      (employeeFormGroup.controls.dayOfBirth.touched || submitCheck)" class="mx-1">
+      Vui lòng chọn ngày sinh!</span>
+
+      <span *ngIf="employeeFormGroup.controls.dayOfBirth.hasError('invalid18') &&
+                      (employeeFormGroup.controls.dayOfBirth.dirty || submitCheck)" class="mx-1">
+      Tuổi phải từ 18 - 80 tuổi!</span>
+      <input type="date" required id="birthday" formControlName="dayOfBirth">
+    </div>
+
+    <div class="row">
+      <label><b>Giới tính</b><span>*:</span></label><br>
+      <div class="col-4">
+        <label><input type="radio" class="m-2" value="0" name="gender" formControlName="gender">Nam</label>
+
+      </div>
+      <div class="col-4">
+        <label><input type="radio" class="m-2 " value="1" name="gender"
+                                   formControlName="gender">Nữ</label>
+      </div>
+      <div class="col-4">
+        <label><input type="radio" class="m-2" value="2" name="gender" formControlName="gender">Khác</label><br>
+
+      </div>
+
+
+      <span *ngIf="employeeFormGroup.controls.gender.hasError('required') &&
+                     ( employeeFormGroup.controls.gender.touched || submitCheck)" class="mx-1">
+      Vui lòng chọn giới tính!</span>
+
+
+    </div>
+
+    <div class="row mt-3">
+      <label for="img"><b>Hình ảnh</b><span>*</span></label>
+      <span *ngIf="employeeFormGroup.controls.image.hasError('required') &&
+                     employeeFormGroup.controls.image.touched" class="mx-1">
+      Vui lòng chọn ảnh!</span>
+
+      <!--      <span *ngIf="employeeFormGroup.controls.image.hasError('required') &&-->
+      <!--                     ( employeeFormGroup.controls.image.dirty || submitCheck)" class="mx-1">-->
+      <!--      Chọn ảnh!</span>-->
+
+
+      <div id="img" class="col-lg-6 upload-wrap mt-4">
+        <input id="file-uploader" class="font-control-file" type="file" accept="image/*" (change)="showPreview($event)"
+               [src]="imgUrl">
+
+        <!--        <p class="pFile mt-1">Định dạng cho jpg, png</p>-->
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4">
+        <div class="col-lg-6 mt-4">
+          <img [src]="imgUrl" id="img-grid" class="uploadpreview 01 imgEmployee">
+        </div>
+      </div>
+      <div class="col-4"></div>
+    </div>
+
+      <div class="clearfix row mt-3 ">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-6 ">
+          <button type="submit" class="button greenBorder btnGreen mb-2" style="width: 90px; margin-left: 30px">Thêm</button>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+          <button type="button" class="button yellowBorder  btnYellow mb-2" style="width: 90px; margin-left: 30px" routerLink="/list">Quay lại</button>
+        </div>
+    </div>
+  </div>
+</form>
