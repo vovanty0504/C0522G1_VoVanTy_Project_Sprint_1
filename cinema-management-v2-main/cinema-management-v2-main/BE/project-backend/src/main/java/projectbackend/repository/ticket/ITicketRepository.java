@@ -243,6 +243,7 @@ public interface ITicketRepository extends JpaRepository<Ticket, Integer> {
             nativeQuery = true)
     Page<ITicketTyDto> findAllCanceledTickets(@Param("username") String username, Pageable pageable);
 
+
     /**
      * creator
      * Võ Văn Tý

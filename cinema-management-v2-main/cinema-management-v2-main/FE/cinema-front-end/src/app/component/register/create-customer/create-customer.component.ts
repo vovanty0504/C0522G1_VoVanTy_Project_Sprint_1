@@ -92,7 +92,7 @@ export class CreateCustomerComponent implements OnInit {
         });
       }
       this.customerForm.reset();
-      this.router.navigateByUrl('');
+      window.location.replace('');
     }, error => {
       this.action = false;
     }, () => {

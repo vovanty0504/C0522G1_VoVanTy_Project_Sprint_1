@@ -5,6 +5,7 @@ import {PromotionDetailComponent} from './promotion-detail/promotion-detail.comp
 import {MovieDetailComponent} from './movie-detail/movie-detail.component';
 import {MoviePlayComponent} from './movie-play/movie-play.component';
 import {MoviePremiereComponent} from './movie-premiere/movie-premiere.component';
+import {ListPromotionComponent} from './list-promotion/list-promotion.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,9 @@ const routes: Routes = [
   },
   {
     path: 'moviePremiere', component: MoviePremiereComponent
+  },
+  {
+    path: 'promotionDetail', component: ListPromotionComponent
   },
   {
     path: 'detailPr/:id', component: PromotionDetailComponent

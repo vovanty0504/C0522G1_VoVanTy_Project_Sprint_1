@@ -1,0 +1,30 @@
+<div class="row">
+  <h2 >KHUYẾN MÃI</h2>
+  <div class="row mb-2 mt-5" style="background: orange;height: 3px"></div>
+  <h3 *ngIf="!content" class="text-danger text-center">Hiện không có chương trình khuyến mãi nào!</h3>
+  <div class="mt-2 mx-5 d-flex row" *ngIf="content">
+    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" *ngFor="let pro of promotionList">
+      <ul>
+        <li class="booking-card"
+            style="background-image: url({{pro.image}})">
+          <div class="book-container">
+            <div class="content text-center wrapCss">
+              <button type="submit" class="button btnBlue blueBorder" routerLink="/detailPr/{{pro.id}}">Xem chi tiết</button>
+            </div>
+          </div>
+          <div class="informations-container">
+            <h2 class="title">{{pro.name}}</h2>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <div class="content text-center wrapCss" *ngIf="numberRecord < totalRecord - 1 ">
+      <div *ngIf="content">
+        <button type="submit" class="button btnBlue blueBorder" (click)="loadMore()">Xem thêm</button>
+      </div>
+    </div>
+  </div>
+</div>
+

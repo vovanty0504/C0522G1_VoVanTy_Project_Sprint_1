@@ -122,9 +122,9 @@
   <div class="col-lg-2"></div>
   <div class="col-lg-8 col-md-12 col-ms-12">
     <div class="mb-5 mt-5" *ngIf="!action" style="color: orange;text-align: center">
-      <div class="spinner-border text-warning" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
+<!--      <div class="spinner-border text-warning" role="status">-->
+<!--        <span class="visually-hidden">Loading...</span>-->
+<!--      </div>-->
       <h1>Phim đang cập nhật. Vui lòng chọn phim khác !</h1>
     </div>
     <div class="row" *ngIf="action">
@@ -167,7 +167,7 @@
 </div>
 <!-- Tien HTML-->
 
-<div class=" mt-4 mb-1 container">
+<div class=" mt-4 mb-4 container">
   <h2 class="mt-5 text-center">KHUYẾN MÃI</h2>
   <div class="row mb-5 mt-3" style="background: orange;height: 3px"></div>
   <h3 *ngIf="!content" class="text-danger text-center">Hiện không có chương trình khuyến mãi nào!</h3>
@@ -188,10 +188,12 @@
       </ul>
     </div>
   </div>
-    <div class="content text-center wrapCss " *ngIf="numberRecord < totalRecord - 1 ">
+  <div>
+    <div class="content text-center wrapCss" *ngIf="numberRecord < totalRecord - 1 ">
       <div *ngIf="content">
-        <button type="submit" class="button btnBlue blueBorder " (click)="loadMore()">Xem thêm</button>
+        <button type="submit" class="button btnBlue blueBorder" (click)="loadMore()">Xem thêm</button>
       </div>
     </div>
+  </div>
 </div>
 
